@@ -1,7 +1,6 @@
 package domain;
 
 import utils.NivelEscolar;
-import utils.Rol;
 
 public abstract class Empleado {
 
@@ -11,20 +10,20 @@ public abstract class Empleado {
     protected int telefono;
     protected int ausencias;
     protected int diasTrabajados;
-    protected Rol rol;
     protected NivelEscolar nivelEscolar;
-    protected Proyecto proyectoAsignado = new Proyecto(null, null, null, null, 0);
+    protected Proyecto proyectoAsignado;
 
-    public Empleado(String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, Rol rol, NivelEscolar nivelEscolar) {
+    public Empleado(String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
         this.telefono = telefono;
         this.ausencias = ausencias;
         this.diasTrabajados = diasTrabajados;
-        this.rol = rol;
         this.nivelEscolar = nivelEscolar;
+        this.proyectoAsignado = proyectoAsignado;
     }
+
 
     public String getCodigo() {
         return codigo;
@@ -74,14 +73,6 @@ public abstract class Empleado {
         this.diasTrabajados = diasTrabajados;
     }
 
-    public Rol getRol() {
-        return rol;
-    }
-
-    public void setRol(Rol rol) {
-        this.rol = rol;
-    }
-
     public NivelEscolar getNivelEscolar() {
         return nivelEscolar;
     }
@@ -101,9 +92,10 @@ public abstract class Empleado {
     public double salario() {
         double descuento = 1.3 * getDiasTrabajados();
         if (NivelEscolar.Estudiante.equals(nivelEscolar)) {
-            return -1;
-        } else if (getAusencias() < 4) {
-            descuento += 10;
+            return 0;
+        } else 
+            if (ausencias < 4) {
+                descuento += 10;
         }
         return descuento;
     }

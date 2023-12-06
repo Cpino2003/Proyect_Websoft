@@ -1,7 +1,6 @@
 package domain;
 
 import utils.NivelEscolar;
-import utils.Rol;
 import vista.FormMain;
 
 
@@ -10,8 +9,8 @@ public class Analista extends GraduadoUniversitario{
     private String metodologiaSoftwareUtilizada;
     private int aproxClasesXDia;
 
-    public Analista(String metodologiaSoftwareUtilizada, int aproxClasesXDia, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, Rol rol, NivelEscolar nivelEscolar) {
-        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, rol, nivelEscolar);
+    public Analista(String metodologiaSoftwareUtilizada, int aproxClasesXDia, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
+        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado);
         this.metodologiaSoftwareUtilizada = metodologiaSoftwareUtilizada;
         this.aproxClasesXDia = aproxClasesXDia;
     }
@@ -35,7 +34,7 @@ public class Analista extends GraduadoUniversitario{
     @Override
     public double salario(){
             FormMain e = new FormMain();                   
-            double salario = (((proyectoAsignado.getValorBase()*3)/10) / e.getEmpresa().cantTrabajadoresPorRol(Rol.Analista)) + getAproxClasesXDia() + (getMetodologiaSoftwareUtilizada().equals("UML")?getAproxClasesXDia()/10:0);
+            double salario = (((proyectoAsignado.getValorBase()*3)/10) / e.getEmpresa().cantidadAnalista()) + getAproxClasesXDia() + (getMetodologiaSoftwareUtilizada().equals("UML")?getAproxClasesXDia()/10:0);
             if(getAusencias() >= 3 && getAusencias() <= 7)
                 salario -= ((salario * 3)/100);
             else 

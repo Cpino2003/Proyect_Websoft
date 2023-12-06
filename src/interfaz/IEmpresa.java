@@ -3,7 +3,6 @@ package interfaz;
 import domain.Departamento;
 import domain.Empleado;
 import domain.Proyecto;
-import utils.Rol;
 
 public interface IEmpresa {
 
@@ -25,9 +24,11 @@ public interface IEmpresa {
 
     public int trabajadorDescuentoAusencia(String EmpleadoABuscarSuCantidadAusencias);
 
-    public int cantTrabajadoresPorRol(Rol rolABuscarCantidadTrabajadores);
-
-    public void asignarProyectoTrabajador(String empleadoAAsignar, String proyectoAAsignar);
+    public int cantidadProgramadores();
+            
+    public int cantidadAnalista();
+            
+    public Proyecto asignarProyectoTrabajador(String proyectoAAsignar);
 
     public Empleado buscarEmpleado(String empleadoABuscar);
 

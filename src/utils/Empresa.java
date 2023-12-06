@@ -2,6 +2,7 @@ package utils;
 
 import domain.Departamento;
 import domain.Empleado;
+import domain.Programador;
 import domain.Proyecto;
 import interfaz.IEmpresa;
 import java.util.ArrayList;
@@ -12,23 +13,35 @@ public class Empresa implements IEmpresa {
     private List<Departamento> departamentos;
     private List<Empleado> empleados;
     private List<Proyecto> proyectos;
-
+         
     public Empresa(List<Departamento> departamentos, List<Empleado> empleados, List<Proyecto> proyectos) {
-        departamentos = new ArrayList<>();
-        empleados = new ArrayList<>();
-        proyectos = new ArrayList<>();
+        this.departamentos = new ArrayList<>();
+        this.empleados = new ArrayList<>();
+        this.proyectos = new ArrayList<>();
     }
 
     public List<Departamento> getDepartamentos() {
         return departamentos;
     }
 
+    public void setDepartamentos(List<Departamento> departamentos) {
+        this.departamentos = departamentos;
+    }
+
     public List<Empleado> getEmpleados() {
         return empleados;
     }
 
+    public void setEmpleados(List<Empleado> empleados) {
+        this.empleados = empleados;
+    }
+
     public List<Proyecto> getProyectos() {
         return proyectos;
+    }
+
+    public void setProyectos(List<Proyecto> proyectos) {
+        this.proyectos = proyectos;
     }
 
     //Metodo para añadir un departamento
@@ -53,7 +66,6 @@ public class Empresa implements IEmpresa {
     @Override
     public String trabajadorMayorSalario() {
         Empleado empleado = empleados.get(0);
-
         for (Empleado e : empleados.subList(1, empleados.size())) {
             if (e.salario() > empleado.salario()) {
                 empleado = e;
@@ -66,7 +78,6 @@ public class Empresa implements IEmpresa {
     @Override
     public double salarioTotal() {
         double salarioTotal = 0;
-
         for (Empleado e : empleados) {
             salarioTotal += e.salario();
         }
@@ -83,7 +94,6 @@ public class Empresa implements IEmpresa {
     @Override
     public String proyectoMayorValor() {
         Proyecto proyectoMasValor = proyectos.get(0);
-
         for (Proyecto p : proyectos) {
             if (p.getValorBase() > proyectoMasValor.getValorBase()) {
                 proyectoMasValor = p;
@@ -92,10 +102,9 @@ public class Empresa implements IEmpresa {
         return proyectoMasValor.getNombre();
     }
 
-    //Metodo para ver si un empleado tiene jaba de aseo (si devuelve 1 es V, si devuelve 0 es F, si devuelve -1 el empleado no existe)
+    //Metodo para ver si un empleado tiene jaba de aseo
     @Override
     public int trabajadorJabaAseo(String siEmpleadoTieneJavaAseo) {
-
         if (buscarEmpleado(siEmpleadoTieneJavaAseo) != null) {
             if (buscarEmpleado(siEmpleadoTieneJavaAseo).getAusencias() < 4) {
                 return 1;
@@ -106,7 +115,7 @@ public class Empresa implements IEmpresa {
         return -1;
     }
 
-    //Metodo para saber el descuento de un trabajador por sus ausencias(Si devuelve -1 no existe el empleado)
+    //Metodo para saber el descuento de un trabajador por sus ausencias 
     @Override
     public int trabajadorDescuentoAusencia(String EmpleadoABuscarSuCantidadAusencias) {
         if (buscarEmpleado(EmpleadoABuscarSuCantidadAusencias) != null) {
@@ -124,28 +133,39 @@ public class Empresa implements IEmpresa {
         return -1;
     }
 
-    //Metodo para saber la cantidad de trabajadores que hay por rol
+    //Metodo para saber la cantidad de Programadores
     @Override
-    public int cantTrabajadoresPorRol(Rol rolABuscarCantidadTrabajadores) {
-        int contador = 0;
+    public int cantidadProgramadores(){
+        int contadorProgramador  = 0;
         for (Empleado e : empleados) {
-            if (rolABuscarCantidadTrabajadores.equals(e.getRol())) {
-                if (e.getNivelEscolar().equals(NivelEscolar.GraduadoUniversitario) || e.getNivelEscolar().equals(NivelEscolar.TecnicoMedio)) {
-                    contador++;
-                }
+            if (e instanceof Programador && NivelEscolar.TecnicoMedio.equals(e.getNivelEscolar())) {
+                contadorProgramador++;
             }
         }
-        return contador;
+        return contadorProgramador;
+    }
+    
+    //Metodo para saber la cantidad de Analistas
+    @Override
+    public int cantidadAnalista() {
+        int contadorAnalista  = 0;
+        for (Empleado e : empleados) {
+            if (e instanceof Programador) {
+                contadorAnalista++;
+            }
+        }
+        return contadorAnalista;
     }
 
     //Metodo para asignar un proyecto a un trabajador
     @Override
-    public void asignarProyectoTrabajador(String empleadoAAsignar, String proyectoAAsignar) {
+    public Proyecto asignarProyectoTrabajador(String proyectoAAsignar) {
         for (Proyecto proyecto : proyectos) {
             if (proyectoAAsignar.equals(proyecto.getNombre())) {
-                buscarEmpleado(empleadoAAsignar).setProyectoAsignado(proyecto);
+                return proyecto;
             }
         }
+        return null;
     }
 
     //Metodo para buscar los datos de un empleado
