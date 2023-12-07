@@ -31,15 +31,20 @@ public class JefeProyecto extends GraduadoUniversitario {
 
     @Override
     public double salario() {
-        double salario = ((proyectoAsignado.getValorBase() * 2) / 10) + ((añosExperiencia / 2) + (añosExperiencia / 4));
-        if (getAusencias() >= 3 && getAusencias() <= 7) {
-            salario -= ((salario * 3) / 100);
-        } else if (getAusencias() > 7 && getAusencias() <= 10) {
-            salario -= ((salario * 5) / 100);
-        } else {
-            salario -= salario / 4;
-        }
-        return salario;
+       double salario = (proyectoAsignado.getValorBase()*2)/10 + añosExperiencia/2 + añosExperiencia/4;
+       
+               if(ausencias >= 3 || ausencias <= 7)
+            salario -= ((salario*3)/100);
+        else
+            if(ausencias > 7 || ausencias <= 10)
+                salario -= ((salario*5)/100);
+            else
+                if(ausencias > 10 || ausencias <= 15)
+                    salario -= (salario/4);
+        
+        salario = salario - super.salario(); 
+        
+        return salario;      
     }
 
 }

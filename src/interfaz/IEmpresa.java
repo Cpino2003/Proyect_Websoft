@@ -6,17 +6,15 @@ import domain.Proyecto;
 
 public interface IEmpresa {
 
-    public boolean addDepartamento(Departamento departamentoAAñadir);
+    public void addDepartamento(Departamento departamentoAAñadir);
 
-    public boolean addProyecto(Proyecto proyectoAAñadir);
+    public void addProyecto(Proyecto proyectoAAñadir, String departamentoARecibirProyecto);
 
-    public boolean addEmpleado(Empleado empleadoAAñadir);
+    public void addEmpleado(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado);
 
     public String trabajadorMayorSalario();
 
     public double salarioTotal();
-
-    public boolean darBajaTrabajador(String empleadoBaja);
 
     public String proyectoMayorValor();
 
@@ -24,12 +22,5 @@ public interface IEmpresa {
 
     public int trabajadorDescuentoAusencia(String EmpleadoABuscarSuCantidadAusencias);
 
-    public int cantidadProgramadores();
-            
-    public int cantidadAnalista();
-            
-    public Proyecto asignarProyectoTrabajador(String proyectoAAsignar);
-
-    public Empleado buscarEmpleado(String empleadoABuscar);
 
 }

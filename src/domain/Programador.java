@@ -1,7 +1,6 @@
 package domain;
 
 import utils.NivelEscolar;
-import vista.FormMain;
 
 public class Programador extends Empleado {
 
@@ -42,21 +41,28 @@ public class Programador extends Empleado {
 
     @Override
     public double salario() {
-        if (super.salario() != 0) {
-            FormMain e = new FormMain();
-            double salario = ((proyectoAsignado.getValorBase() / 2) / e.getEmpresa().cantidadProgramadores()) + (getAproxLineasCodigoXHora() / 10);
-            if (getAusencias() >= 3 && getAusencias() <= 7) {
-                salario -= ((salario * 3) / 100);
-            } else if (getAusencias() > 7 && getAusencias() <= 10) {
-                salario -= ((salario * 5) / 100);
-            } else {
-                salario -= salario / 4;
-            }
-            salario -= super.salario();
-               return salario;
-        } else {
-            return 0;
-        }
+        double salario = ((proyectoAsignado.getValorBase() / 2) / cantidadProgramador()) + (aproxLineasCodigoXHora/10);
+        
+        if(ausencias >= 3 || ausencias <= 7)
+            salario -= ((salario*3)/100);
+        else
+            if(ausencias > 7 || ausencias <= 10)
+                salario -= ((salario*5)/100);
+            else
+                if(ausencias > 10 || ausencias <= 15)
+                    salario -= (salario/4);
+        
+        salario = salario - super.salario();  
+        
+        return salario;
     }
-
+    
+    private int cantidadProgramador(){
+        int contador = 0;
+        for(Empleado e : proyectoAsignado.getListaEmpleadosAsignados())
+            if(e instanceof Programador && NivelEscolar.TecnicoMedio.equals(e.getNivelEscolar()))
+                contador++;
+        return contador;
+    }
 }
+

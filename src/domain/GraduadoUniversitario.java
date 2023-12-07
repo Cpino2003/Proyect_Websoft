@@ -15,7 +15,6 @@ public abstract class GraduadoUniversitario extends Empleado {
         this.añoGraduacion = añoGraduacion;
     }
 
-   
     public String getTitulo() {
         return titulo;
     }

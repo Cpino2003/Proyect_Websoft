@@ -2,7 +2,6 @@ package utils;
 
 import domain.Departamento;
 import domain.Empleado;
-import domain.Programador;
 import domain.Proyecto;
 import interfaz.IEmpresa;
 import java.util.ArrayList;
@@ -11,13 +10,9 @@ import java.util.List;
 public class Empresa implements IEmpresa {
 
     private List<Departamento> departamentos;
-    private List<Empleado> empleados;
-    private List<Proyecto> proyectos;
-         
-    public Empresa(List<Departamento> departamentos, List<Empleado> empleados, List<Proyecto> proyectos) {
+
+    public Empresa(List<Departamento> departamentos) {
         this.departamentos = new ArrayList<>();
-        this.empleados = new ArrayList<>();
-        this.proyectos = new ArrayList<>();
     }
 
     public List<Departamento> getDepartamentos() {
@@ -28,73 +23,74 @@ public class Empresa implements IEmpresa {
         this.departamentos = departamentos;
     }
 
-    public List<Empleado> getEmpleados() {
-        return empleados;
-    }
-
-    public void setEmpleados(List<Empleado> empleados) {
-        this.empleados = empleados;
-    }
-
-    public List<Proyecto> getProyectos() {
-        return proyectos;
-    }
-
-    public void setProyectos(List<Proyecto> proyectos) {
-        this.proyectos = proyectos;
-    }
-
     //Metodo para añadir un departamento
     @Override
-    public boolean addDepartamento(Departamento departamentoAAñadir) {
-        return departamentos.add(departamentoAAñadir);
+    public void addDepartamento(Departamento departamentoAAñadir) {
+        departamentos.add(departamentoAAñadir);
     }
 
-    //Metodo para añadir un proyecto
+    //Metodo para asignarle un proyecto a un departamento
     @Override
-    public boolean addProyecto(Proyecto proyectoAAñadir) {
-        return proyectos.add(proyectoAAñadir);
-    }
-
-    //Metodo para añadir un empleado
-    @Override
-    public boolean addEmpleado(Empleado empleadoAAñadir) {
-        return this.empleados.add(empleadoAAñadir);
-    }
-
-    //Metodo para buscar el nombre empleado con mayor salario
-    @Override
-    public String trabajadorMayorSalario() {
-        Empleado empleado = empleados.get(0);
-        for (Empleado e : empleados.subList(1, empleados.size())) {
-            if (e.salario() > empleado.salario()) {
-                empleado = e;
+    public void addProyecto(Proyecto proyectoAAñadir, String departamentoARecibirProyecto) {
+        for (Departamento d : departamentos) {
+            if (departamentoARecibirProyecto.equals(d.getNombre())) {
+                d.getListaProyectosAsignados().add(proyectoAAñadir);
             }
         }
-        return empleado.getNombre();
+    }
+
+    //Metodo para asignarle un empleado a un departamento
+    @Override
+    public void addEmpleado(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado) {
+        for (Departamento d : departamentos) {
+            if (departamentoTrabajaEmpleado.equals(d.getNombre())) {
+                d.getListaEmpleados().add(empleadoAAñadir);
+            }
+        }
+    }
+
+    //metodo para asignarle Empleados a un proyecto
+//    public void addEmpleadoProyecto(Empleado empleadoAsignarPRoyecto, String proyecto) {
+//        for (Departamento d : departamentos) {
+//            if (empleadoAsignarPRoyecto.getDepartamentoLabora().getNombre().equals(d.getNombre())) {
+//                for (Proyecto p : d.getListaProyectosAsignados()) {
+//                    if (p.getNombre().equals(proyecto)) {
+//                        p.getListaEmpleadosAsignados().add(empleadoAsignarPRoyecto);
+//                        empleadoAsignarPRoyecto.setValorAgregagdo(p.getValorBase());
+//                    }
+//                }
+//            }
+//        }
+//    }
+    
+    //Metodo para buscar el nombre empleado con mayor salario de la empresa
+    @Override
+    public String trabajadorMayorSalario() {
+        Empleado empleadoMayorSalario = todosEmpleadosEmpresa().get(0);
+        for (Empleado e : todosEmpleadosEmpresa().subList(1, todosEmpleadosEmpresa().size())) {
+            if (e.salario() > empleadoMayorSalario.salario()) {
+                empleadoMayorSalario = e;
+            }
+        }
+
+        return empleadoMayorSalario.getNombre();
     }
 
     //Metodo obtener el salario total
     @Override
     public double salarioTotal() {
         double salarioTotal = 0;
-        for (Empleado e : empleados) {
+        for (Empleado e : todosEmpleadosEmpresa()) {
             salarioTotal += e.salario();
         }
         return salarioTotal;
     }
 
-    //Metodo para dar baja a un trabajador
-    @Override
-    public boolean darBajaTrabajador(String empleadoBaja) {
-        return empleados.remove(buscarEmpleado(empleadoBaja));
-    }
-
     //Metodo para obtener el nombre del proyecto de mayor valor
     @Override
     public String proyectoMayorValor() {
-        Proyecto proyectoMasValor = proyectos.get(0);
-        for (Proyecto p : proyectos) {
+        Proyecto proyectoMasValor = todosProyectosEmpresa().get(0);
+        for (Proyecto p : todosProyectosEmpresa()) {
             if (p.getValorBase() > proyectoMasValor.getValorBase()) {
                 proyectoMasValor = p;
             }
@@ -133,50 +129,35 @@ public class Empresa implements IEmpresa {
         return -1;
     }
 
-    //Metodo para saber la cantidad de Programadores
-    @Override
-    public int cantidadProgramadores(){
-        int contadorProgramador  = 0;
-        for (Empleado e : empleados) {
-            if (e instanceof Programador && NivelEscolar.TecnicoMedio.equals(e.getNivelEscolar())) {
-                contadorProgramador++;
-            }
-        }
-        return contadorProgramador;
-    }
-    
-    //Metodo para saber la cantidad de Analistas
-    @Override
-    public int cantidadAnalista() {
-        int contadorAnalista  = 0;
-        for (Empleado e : empleados) {
-            if (e instanceof Programador) {
-                contadorAnalista++;
-            }
-        }
-        return contadorAnalista;
-    }
-
-    //Metodo para asignar un proyecto a un trabajador
-    @Override
-    public Proyecto asignarProyectoTrabajador(String proyectoAAsignar) {
-        for (Proyecto proyecto : proyectos) {
-            if (proyectoAAsignar.equals(proyecto.getNombre())) {
-                return proyecto;
-            }
-        }
-        return null;
-    }
-
     //Metodo para buscar los datos de un empleado
-    @Override
-    public Empleado buscarEmpleado(String empleadoABuscar) {
-        for (Empleado empleado : empleados) {
+    private Empleado buscarEmpleado(String empleadoABuscar) {
+
+        for (Empleado empleado : todosEmpleadosEmpresa()) {
             if (empleadoABuscar.equals(empleado.getNombre())) {
                 return empleado;
             }
         }
         return null;
+    }
+
+    private List<Empleado> todosEmpleadosEmpresa() {
+        List<Empleado> empleadosEmpresa = new ArrayList<>();
+
+        for (Departamento d : departamentos) {
+            empleadosEmpresa = d.getListaEmpleados();
+        }
+
+        return empleadosEmpresa;
+    }
+
+    private List<Proyecto> todosProyectosEmpresa() {
+        List<Proyecto> proyectosEmpresa = new ArrayList<>();
+
+        for (Departamento d : departamentos) {
+            proyectosEmpresa = d.getListaProyectosAsignados();
+        }
+
+        return proyectosEmpresa;
     }
 
 }

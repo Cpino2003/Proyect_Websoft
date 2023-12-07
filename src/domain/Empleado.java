@@ -2,7 +2,7 @@ package domain;
 
 import utils.NivelEscolar;
 
-public abstract class Empleado {
+public class Empleado {
 
     protected String codigo;
     protected String nombre;
@@ -23,7 +23,6 @@ public abstract class Empleado {
         this.nivelEscolar = nivelEscolar;
         this.proyectoAsignado = proyectoAsignado;
     }
-
 
     public String getCodigo() {
         return codigo;
@@ -81,11 +80,7 @@ public abstract class Empleado {
         this.nivelEscolar = nivelEscolar;
     }
 
-    public Proyecto getProyectoAsignado() {
-        return proyectoAsignado;
-    }
-
-    public void setProyectoAsignado(Proyecto proyectoAsignado) {
+    public Empleado(Proyecto proyectoAsignado) {
         this.proyectoAsignado = proyectoAsignado;
     }
 

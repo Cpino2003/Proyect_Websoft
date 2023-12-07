@@ -1,6 +1,5 @@
 package vista;
 
-import javax.swing.JOptionPane;
 import utils.Empresa;
 
 public class FormMain extends javax.swing.JFrame {

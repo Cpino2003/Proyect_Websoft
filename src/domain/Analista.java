@@ -1,7 +1,6 @@
 package domain;
 
 import utils.NivelEscolar;
-import vista.FormMain;
 
 
 public class Analista extends GraduadoUniversitario{
@@ -33,16 +32,28 @@ public class Analista extends GraduadoUniversitario{
     
     @Override
     public double salario(){
-            FormMain e = new FormMain();                   
-            double salario = (((proyectoAsignado.getValorBase()*3)/10) / e.getEmpresa().cantidadAnalista()) + getAproxClasesXDia() + (getMetodologiaSoftwareUtilizada().equals("UML")?getAproxClasesXDia()/10:0);
-            if(getAusencias() >= 3 && getAusencias() <= 7)
-                salario -= ((salario * 3)/100);
-            else 
-                if(getAusencias() > 7 && getAusencias() <= 10)
-                    salario -= ((salario * 5)/100);
-                else
-                    salario -= salario /4 ;
-            return salario;
+        double salario = (((proyectoAsignado.getValorBase() * 3)/10) / cantidadAnalista()) + aproxClasesXDia + (metodologiaSoftwareUtilizada.equals("UML") ?aproxClasesXDia/10 :0);
+        
+        if(ausencias >= 3 || ausencias <= 7)
+            salario -= ((salario*3)/100);
+        else
+            if(ausencias > 7 || ausencias <= 10)
+                salario -= ((salario*5)/100);
+            else
+                if(ausencias > 10 || ausencias <= 15)
+                    salario -= (salario/4);
+        
+        salario = salario - super.salario();  
+        
+        return salario;
+    }
+    
+    private int cantidadAnalista(){
+        int contador = 0;
+        for(Empleado e : proyectoAsignado.getListaEmpleadosAsignados())
+            if(e instanceof Analista)
+                contador++;
+        return contador;
     }
 
 }

@@ -1,5 +1,8 @@
 package domain;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class Proyecto {
 
     private String nombre;
@@ -7,13 +10,15 @@ public class Proyecto {
     private String empresaContratista;
     private String fechaCulminacion;
     private double valorBase;
+    private List<Empleado> listaEmpleadosAsignados;
 
-    public Proyecto(String nombre, String plataformaAProgramar, String empresaContratista, String fechaCulminacion, double valorBase) {
+    public Proyecto(String nombre, String plataformaAProgramar, String empresaContratista, String fechaCulminacion, double valorBase, List<Empleado> listaEmpleadosAsignados) {
         this.nombre = nombre;
         this.plataformaAProgramar = plataformaAProgramar;
         this.empresaContratista = empresaContratista;
         this.fechaCulminacion = fechaCulminacion;
         this.valorBase = valorBase;
+        this.listaEmpleadosAsignados = new ArrayList<>();
     }
 
     public String getNombre() {
@@ -54,6 +59,14 @@ public class Proyecto {
 
     public void setValorBase(double valorBase) {
         this.valorBase = valorBase;
+    }
+
+    public List<Empleado> getListaEmpleadosAsignados() {
+        return listaEmpleadosAsignados;
+    }
+
+    public void setListaEmpleadosAsignados(List<Empleado> listaEmpleadosAsignados) {
+        this.listaEmpleadosAsignados = listaEmpleadosAsignados;
     }
 
 }
