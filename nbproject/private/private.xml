@@ -5,7 +5,7 @@
             <url>src/utils/Empresa.java</url>
             <bookmark id="1">
                 <name/>
-                <line>130</line>
+                <line>151</line>
                 <key/>
             </bookmark>
         </file>
@@ -16,13 +16,13 @@
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/Programador.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/GraduadoUniversitario.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/utils/Empresa.java</file>
-            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/Proyecto.java</file>
-            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/vista/RegistroDatos.java</file>
+            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/vista/AddEmpleado.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/interfaz/IEmpresa.java</file>
+            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/vista/AddProyecto.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/Empleado.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/Departamento.java</file>
             <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/domain/JefeProyecto.java</file>
-            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/utils/NivelEscolar.java</file>
+            <file>file:/C:/Users/Yanetsy/Desktop/Proyecto/src/vista/FormMain.java</file>
         </group>
     </open-files>
 </project-private>

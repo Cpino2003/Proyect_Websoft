@@ -11,16 +11,18 @@ public class Proyecto {
     private String fechaCulminacion;
     private double valorBase;
     private List<Empleado> listaEmpleadosAsignados;
+    private Departamento departamentoAsignado;
 
-    public Proyecto(String nombre, String plataformaAProgramar, String empresaContratista, String fechaCulminacion, double valorBase, List<Empleado> listaEmpleadosAsignados) {
+    public Proyecto(String nombre, String plataformaAProgramar, String empresaContratista, String fechaCulminacion, double valorBase, List<Empleado> listaEmpleadosAsignados, Departamento departamentoAsignado) {
         this.nombre = nombre;
         this.plataformaAProgramar = plataformaAProgramar;
         this.empresaContratista = empresaContratista;
         this.fechaCulminacion = fechaCulminacion;
         this.valorBase = valorBase;
         this.listaEmpleadosAsignados = new ArrayList<>();
+        this.departamentoAsignado = departamentoAsignado;
     }
-
+    
     public String getNombre() {
         return nombre;
     }
@@ -68,5 +70,15 @@ public class Proyecto {
     public void setListaEmpleadosAsignados(List<Empleado> listaEmpleadosAsignados) {
         this.listaEmpleadosAsignados = listaEmpleadosAsignados;
     }
+
+    public Departamento getDepartamentoAsignado() {
+        return departamentoAsignado;
+    }
+
+    public void setDepartamentoAsignado(Departamento departamentoAsignado) {
+        this.departamentoAsignado = departamentoAsignado;
+    }
+    
+    
 
 }

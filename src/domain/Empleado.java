@@ -84,6 +84,14 @@ public class Empleado {
         this.proyectoAsignado = proyectoAsignado;
     }
 
+    public Proyecto getProyectoAsignado() {
+        return proyectoAsignado;
+    }
+
+    public void setProyectoAsignado(Proyecto proyectoAsignado) {
+        this.proyectoAsignado = proyectoAsignado;
+    }
+
     public double salario() {
         double descuento = 1.3 * getDiasTrabajados();
         if (NivelEscolar.Estudiante.equals(nivelEscolar)) {

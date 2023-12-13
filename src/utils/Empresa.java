@@ -25,44 +25,64 @@ public class Empresa implements IEmpresa {
 
     //Metodo para añadir un departamento
     @Override
-    public void addDepartamento(Departamento departamentoAAñadir) {
-        departamentos.add(departamentoAAñadir);
+    public boolean addDepartamento(Departamento departamentoAAñadir) {
+        return departamentos.add(departamentoAAñadir);
+
     }
 
     //Metodo para asignarle un proyecto a un departamento
     @Override
-    public void addProyecto(Proyecto proyectoAAñadir, String departamentoARecibirProyecto) {
-        for (Departamento d : departamentos) {
-            if (departamentoARecibirProyecto.equals(d.getNombre())) {
-                d.getListaProyectosAsignados().add(proyectoAAñadir);
-            }
+    public boolean addProyectoADepartamento(Proyecto proyectoAAñadir, String departamentoARecibirProyecto) {
+        if (buscarDepartamento(departamentoARecibirProyecto) != null) {
+            buscarDepartamento(departamentoARecibirProyecto).getListaProyectosAsignados().add(proyectoAAñadir);
+            return true;
+        } else {
+            return false;
         }
     }
 
     //Metodo para asignarle un empleado a un departamento
     @Override
-    public void addEmpleado(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado) {
-        for (Departamento d : departamentos) {
-            if (departamentoTrabajaEmpleado.equals(d.getNombre())) {
-                d.getListaEmpleados().add(empleadoAAñadir);
-            }
+    public boolean addEmpleadoADepartamento(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado) {
+        if (buscarDepartamento(departamentoTrabajaEmpleado) != null) {
+            buscarDepartamento(departamentoTrabajaEmpleado).getListaEmpleados().add(empleadoAAñadir);
+            return true;
         }
+        return false;
     }
 
-    //metodo para asignarle Empleados a un proyecto
-//    public void addEmpleadoProyecto(Empleado empleadoAsignarPRoyecto, String proyecto) {
-//        for (Departamento d : departamentos) {
-//            if (empleadoAsignarPRoyecto.getDepartamentoLabora().getNombre().equals(d.getNombre())) {
-//                for (Proyecto p : d.getListaProyectosAsignados()) {
-//                    if (p.getNombre().equals(proyecto)) {
-//                        p.getListaEmpleadosAsignados().add(empleadoAsignarPRoyecto);
-//                        empleadoAsignarPRoyecto.setValorAgregagdo(p.getValorBase());
-//                    }
-//                }
-//            }
-//        }
-//    }
+    //Metodo para conocer la lista de empleados sin proyecto asignado
+    @Override
+    public List<Empleado> empleadosSinProyectos(String departamento) {
+        List<Empleado> listaEmpleadosSinProyecto = new ArrayList<>();
+        
+        if (buscarDepartamento(departamento) != null) {
+            for (Empleado empleado : buscarDepartamento(departamento).getListaEmpleados()) {
+                if (empleado.getProyectoAsignado() == null) {
+                    listaEmpleadosSinProyecto.add(empleado);
+                    return listaEmpleadosSinProyecto;
+                }
+            }
+        }
+        return null;
+    }
     
+    @Override
+    public boolean asignarEmpleadosAProyecto(List<Empleado> empleadosAAsignar, String nombreProyecto) {
+        if (buscarEmpleado(nombreProyecto) != null) {
+            buscarProyecto(nombreProyecto).getListaEmpleadosAsignados().addAll(empleadosAAsignar);
+            return true;
+        } else {
+            return false;
+        }
+    }
+    
+    @Override
+    public void asignarProyectoAEmpleado(Proyecto proyectoAsignar, List<Empleado> empleadosAAsignar){
+        for(Empleado empleado: empleadosAAsignar)
+            empleado.setProyectoAsignado(proyectoAsignar);
+    }
+
     //Metodo para buscar el nombre empleado con mayor salario de la empresa
     @Override
     public String trabajadorMayorSalario() {
@@ -80,6 +100,7 @@ public class Empresa implements IEmpresa {
     @Override
     public double salarioTotal() {
         double salarioTotal = 0;
+
         for (Empleado e : todosEmpleadosEmpresa()) {
             salarioTotal += e.salario();
         }
@@ -90,6 +111,7 @@ public class Empresa implements IEmpresa {
     @Override
     public String proyectoMayorValor() {
         Proyecto proyectoMasValor = todosProyectosEmpresa().get(0);
+
         for (Proyecto p : todosProyectosEmpresa()) {
             if (p.getValorBase() > proyectoMasValor.getValorBase()) {
                 proyectoMasValor = p;
@@ -101,6 +123,7 @@ public class Empresa implements IEmpresa {
     //Metodo para ver si un empleado tiene jaba de aseo
     @Override
     public int trabajadorJabaAseo(String siEmpleadoTieneJavaAseo) {
+
         if (buscarEmpleado(siEmpleadoTieneJavaAseo) != null) {
             if (buscarEmpleado(siEmpleadoTieneJavaAseo).getAusencias() < 4) {
                 return 1;
@@ -114,6 +137,7 @@ public class Empresa implements IEmpresa {
     //Metodo para saber el descuento de un trabajador por sus ausencias 
     @Override
     public int trabajadorDescuentoAusencia(String EmpleadoABuscarSuCantidadAusencias) {
+
         if (buscarEmpleado(EmpleadoABuscarSuCantidadAusencias) != null) {
             if (buscarEmpleado(EmpleadoABuscarSuCantidadAusencias).getAusencias() < 3) {
                 return 0;
@@ -135,6 +159,26 @@ public class Empresa implements IEmpresa {
         for (Empleado empleado : todosEmpleadosEmpresa()) {
             if (empleadoABuscar.equals(empleado.getNombre())) {
                 return empleado;
+            }
+        }
+        return null;
+    }
+
+    private Proyecto buscarProyecto(String proyectoABuscar) {
+
+        for (Proyecto proyecto : todosProyectosEmpresa()) {
+            if (proyectoABuscar.equals(proyecto.getNombre())) {
+                return proyecto;
+            }
+        }
+        return null;
+    }
+
+    private Departamento buscarDepartamento(String departamentoBuscar) {
+
+        for (Departamento departamento : departamentos) {
+            if (departamentoBuscar.equals(departamento.getNombre())) {
+                return departamento;
             }
         }
         return null;
