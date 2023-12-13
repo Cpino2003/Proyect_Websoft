@@ -30,6 +30,7 @@ public class Analista extends GraduadoUniversitario{
         this.aproxClasesXDia = aproxClasesXDia;
     }
     
+    //Metodo para calcular el salario del propio empleado
     @Override
     public double salario(){
         double salario = (((proyectoAsignado.getValorBase() * 3)/10) / cantidadAnalista()) + aproxClasesXDia + (metodologiaSoftwareUtilizada.equals("UML") ?aproxClasesXDia/10 :0);

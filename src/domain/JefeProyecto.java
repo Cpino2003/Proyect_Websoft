@@ -29,6 +29,7 @@ public class JefeProyecto extends GraduadoUniversitario {
         this.proyectosDirigidos = proyectosDirigidos;
     }
 
+    //Metodo para calcular el salario del propio empleado
     @Override
     public double salario() {
        double salario = (proyectoAsignado.getValorBase()*2)/10 + añosExperiencia/2 + añosExperiencia/4;

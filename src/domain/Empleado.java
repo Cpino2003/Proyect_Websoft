@@ -92,6 +92,7 @@ public class Empleado {
         this.proyectoAsignado = proyectoAsignado;
     }
 
+    //Metodo para calcular el salario del propio empleado
     public double salario() {
         double descuento = 1.3 * getDiasTrabajados();
         if (NivelEscolar.Estudiante.equals(nivelEscolar)) {

@@ -33,8 +33,10 @@ public class Empresa implements IEmpresa {
     //Metodo para asignarle un proyecto a un departamento
     @Override
     public boolean addProyectoADepartamento(Proyecto proyectoAAñadir, String departamentoARecibirProyecto) {
+
         if (buscarDepartamento(departamentoARecibirProyecto) != null) {
             buscarDepartamento(departamentoARecibirProyecto).getListaProyectosAsignados().add(proyectoAAñadir);
+
             return true;
         } else {
             return false;
@@ -44,18 +46,21 @@ public class Empresa implements IEmpresa {
     //Metodo para asignarle un empleado a un departamento
     @Override
     public boolean addEmpleadoADepartamento(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado) {
+
         if (buscarDepartamento(departamentoTrabajaEmpleado) != null) {
             buscarDepartamento(departamentoTrabajaEmpleado).getListaEmpleados().add(empleadoAAñadir);
+
             return true;
+        } else {
+            return false;
         }
-        return false;
     }
 
     //Metodo para conocer la lista de empleados sin proyecto asignado
     @Override
     public List<Empleado> empleadosSinProyectos(String departamento) {
         List<Empleado> listaEmpleadosSinProyecto = new ArrayList<>();
-        
+
         if (buscarDepartamento(departamento) != null) {
             for (Empleado empleado : buscarDepartamento(departamento).getListaEmpleados()) {
                 if (empleado.getProyectoAsignado() == null) {
@@ -66,33 +71,38 @@ public class Empresa implements IEmpresa {
         }
         return null;
     }
-    
+
+    //Metodo para asignarle una lista de empleados al proyecto
     @Override
     public boolean asignarEmpleadosAProyecto(List<Empleado> empleadosAAsignar, String nombreProyecto) {
-        if (buscarEmpleado(nombreProyecto) != null) {
+
+        if (buscarProyecto(nombreProyecto) != null) {
             buscarProyecto(nombreProyecto).getListaEmpleadosAsignados().addAll(empleadosAAsignar);
             return true;
         } else {
             return false;
         }
     }
-    
+
+    //Metodo para asignarle un objeto de tipo proyecto a un empleado
     @Override
-    public void asignarProyectoAEmpleado(Proyecto proyectoAsignar, List<Empleado> empleadosAAsignar){
-        for(Empleado empleado: empleadosAAsignar)
+    public void asignarProyectoAEmpleado(Proyecto proyectoAsignar, List<Empleado> empleadosAAsignar) {
+
+        for (Empleado empleado : empleadosAAsignar) {
             empleado.setProyectoAsignado(proyectoAsignar);
+        }
     }
 
     //Metodo para buscar el nombre empleado con mayor salario de la empresa
     @Override
     public String trabajadorMayorSalario() {
         Empleado empleadoMayorSalario = todosEmpleadosEmpresa().get(0);
+
         for (Empleado e : todosEmpleadosEmpresa().subList(1, todosEmpleadosEmpresa().size())) {
             if (e.salario() > empleadoMayorSalario.salario()) {
                 empleadoMayorSalario = e;
             }
         }
-
         return empleadoMayorSalario.getNombre();
     }
 
@@ -163,7 +173,8 @@ public class Empresa implements IEmpresa {
         }
         return null;
     }
-
+    
+    //Metodo para buscar los datos de un Proyecto
     private Proyecto buscarProyecto(String proyectoABuscar) {
 
         for (Proyecto proyecto : todosProyectosEmpresa()) {
@@ -173,7 +184,8 @@ public class Empresa implements IEmpresa {
         }
         return null;
     }
-
+    
+    //Metodo para buscar los datos de un Departamento
     private Departamento buscarDepartamento(String departamentoBuscar) {
 
         for (Departamento departamento : departamentos) {
@@ -183,7 +195,8 @@ public class Empresa implements IEmpresa {
         }
         return null;
     }
-
+    
+    //Metodo para obtener una lista de todos los empleados de la empresa
     private List<Empleado> todosEmpleadosEmpresa() {
         List<Empleado> empleadosEmpresa = new ArrayList<>();
 
@@ -194,6 +207,7 @@ public class Empresa implements IEmpresa {
         return empleadosEmpresa;
     }
 
+    //Metodo para obtener todos los proyectos de la empresa
     private List<Proyecto> todosProyectosEmpresa() {
         List<Proyecto> proyectosEmpresa = new ArrayList<>();
 

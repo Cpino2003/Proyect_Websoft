@@ -39,6 +39,7 @@ public class Programador extends Empleado {
         this.cursoGraficoAprobado = cursoGraficoAprobado;
     }
 
+    //Metodo para calcular el salario del propio empleado
     @Override
     public double salario() {
         double salario = ((proyectoAsignado.getValorBase() / 2) / cantidadProgramador()) + (aproxLineasCodigoXHora/10);
