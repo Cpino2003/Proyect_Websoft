@@ -17,6 +17,7 @@ import utils.*;
 public class AddEmpleado extends javax.swing.JDialog {
 
     private Empresa empresa = null;
+    private Departamento departamento = null;
 
     public AddEmpleado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -28,11 +29,14 @@ public class AddEmpleado extends javax.swing.JDialog {
         jRadioButton4.setSelected(true);
     }
 
-    public AddEmpleado(Empresa empresa) {
+    public AddEmpleado(Empresa empresa, Departamento departamento) {
         this(null, true);
         this.empresa = empresa;
-        showProyecto();
+        this.departamento = departamento;
+        showDepartamento();
     }
+    
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -182,7 +186,7 @@ public class AddEmpleado extends javax.swing.JDialog {
             }
         });
 
-        jLabel8.setText("Seleccione el proyecto a asignar:");
+        jLabel8.setText("Seleccione el departamento a asignar:");
 
         jLabel9.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel9.setText("Seleccione el rol del empleado:");
@@ -611,11 +615,11 @@ public class AddEmpleado extends javax.swing.JDialog {
                 .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGap(31, 31, 31)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.LEADING, jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel9)
                         .addContainerGap())
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel4)
                             .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, 145, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -628,24 +632,21 @@ public class AddEmpleado extends javax.swing.JDialog {
                                 .addComponent(jTextField3)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addGroup(jPanel1Layout.createSequentialGroup()
-                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                            .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                            .addComponent(jTextField5))
-                                        .addComponent(jLabel6)
-                                        .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE))
-                                    .addGap(71, 71, 71))
-                                .addGroup(jPanel1Layout.createSequentialGroup()
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                        .addComponent(jLabel5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                        .addComponent(jTextField5))
+                                    .addComponent(jLabel6)
+                                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, 164, javax.swing.GroupLayout.PREFERRED_SIZE)
                                     .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
                                         .addComponent(jComboBox1, javax.swing.GroupLayout.Alignment.LEADING, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                    .addGap(92, 92, 92)
-                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addContainerGap()))
+                                        .addComponent(jLabel8, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                                .addGap(71, 71, 71))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
                                 .addComponent(jButton1)
+                                .addGap(27, 27, 27)
+                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 67, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addContainerGap())))))
             .addComponent(jSeparator1, javax.swing.GroupLayout.Alignment.TRAILING)
         );
@@ -673,18 +674,17 @@ public class AddEmpleado extends javax.swing.JDialog {
                     .addComponent(jLabel3)
                     .addComponent(jLabel8))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                            .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jLabel4))
-                    .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jComboBox1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel4)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 36, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jSeparator1, javax.swing.GroupLayout.PREFERRED_SIZE, 10, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(18, 18, 18)
@@ -756,60 +756,59 @@ public class AddEmpleado extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if (checkComponents()) {
-            String codigo = jTextField1.getText();
-            String nombre = jTextField2.getText();
-            String direccion = jTextField3.getText();
-            int telefono = Integer.parseInt(jTextField4.getText());
-            int ausencias = Integer.parseInt(jTextField5.getText());
-            int diasTrabajados = Integer.parseInt(jTextField6.getText());
-            String nombreProyecto = (String) jComboBox1.getSelectedItem();
-            
-
-            if (jRadioButton2.isSelected()) {
-                int expYears = Integer.parseInt(jTextField11.getText());
-                int cantProyectos = Integer.parseInt(jTextField10.getText());
-                int gradYear = Integer.parseInt(jTextField9.getText());
-                String titulo = jTextField16.getText();
-                JefeProyecto jefeP = new JefeProyecto(expYears, cantProyectos, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null);
-                empresa.addEmpleado(jefeP);
-            }
-
-            if (jRadioButton1.isSelected()) {
-                String metodologiaSoftwareUtilizada = jTextField14.getText();
-                int aproxClasesXDia = Integer.parseInt(jTextField15.getText());
-                int gradYear = Integer.parseInt(jTextField13.getText());
-                String titulo = jTextField17.getText();
-                Analista analista = new Analista(metodologiaSoftwareUtilizada, aproxClasesXDia, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, proyectoEmpleado);
-                empresa.addEmpleado(analista);
-            }
-
-            if (jRadioButton3.isSelected()) {
-                int lineasCode = Integer.parseInt(jTextField18.getText());
-                String plataforma = jTextField19.getText();
-                int n = jComboBox2.getSelectedIndex();
-                NivelEscolar nivelEscolar = NivelEscolar.TecnicoMedio;
-                switch (n) {
-                    case 1:
-                        nivelEscolar = NivelEscolar.Estudiante;
-                        break;
-                }
-                boolean cursoAprobado = true;
-                if (jRadioButton4.isSelected()) {
-                    cursoAprobado = true;
-                } else if (jRadioButton5.isSelected()) {
-                    cursoAprobado = false;
-                }
-
-                Programador programador = new Programador(lineasCode, plataforma, cursoAprobado, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoEmpleado);
-                empresa.addEmpleado(programador);
-            }
-            JOptionPane.showMessageDialog(rootPane, "El empleado se ha añadido de forma satisfactoria");
-
-            clear();
-        } else {
-            JOptionPane.showMessageDialog(rootPane, "Entre todos los valores");
-        }
+//        if (checkComponents()) {
+//            String codigo = jTextField1.getText();
+//            String nombre = jTextField2.getText();
+//            String direccion = jTextField3.getText();
+//            int telefono = Integer.parseInt(jTextField4.getText());
+//            int ausencias = Integer.parseInt(jTextField5.getText());
+//            int diasTrabajados = Integer.parseInt(jTextField6.getText());
+//            String nombreProyecto = (String) jComboBox1.getSelectedItem();
+//
+//            if (jRadioButton2.isSelected()) {
+//                int expYears = Integer.parseInt(jTextField11.getText());
+//                int cantProyectos = Integer.parseInt(jTextField10.getText());
+//                int gradYear = Integer.parseInt(jTextField9.getText());
+//                String titulo = jTextField16.getText();
+//                JefeProyecto jefeP = new JefeProyecto(expYears, cantProyectos, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null);
+//                empresa.addEmpleadoADepartamento(jefeP, nombreProyecto);
+//            }
+//
+//            if (jRadioButton1.isSelected()) {
+//                String metodologiaSoftwareUtilizada = jTextField14.getText();
+//                int aproxClasesXDia = Integer.parseInt(jTextField15.getText());
+//                int gradYear = Integer.parseInt(jTextField13.getText());
+//                String titulo = jTextField17.getText();
+//                Analista analista = new Analista(metodologiaSoftwareUtilizada, aproxClasesXDia, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null);
+//                empresa.addEmpleadoADepartamento(analista, nombreProyecto);
+//            }
+//
+//            if (jRadioButton3.isSelected()) {
+//                int lineasCode = Integer.parseInt(jTextField18.getText());
+//                String plataforma = jTextField19.getText();
+//                int n = jComboBox2.getSelectedIndex();
+//                NivelEscolar nivelEscolar = NivelEscolar.TecnicoMedio;
+//                switch (n) {
+//                    case 1:
+//                        nivelEscolar = NivelEscolar.Estudiante;
+//                        break;
+//                }
+//                boolean cursoAprobado = true;
+//                if (jRadioButton4.isSelected()) {
+//                    cursoAprobado = true;
+//                } else if (jRadioButton5.isSelected()) {
+//                    cursoAprobado = false;
+//                }
+//
+//                Programador programador = new Programador(lineasCode, plataforma, cursoAprobado, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, null);
+//                empresa.addEmpleadoADepartamento(programador, nombreProyecto);
+//            }
+//            JOptionPane.showMessageDialog(rootPane, "El empleado se ha añadido de forma satisfactoria");
+//
+//            clear();
+//        } else {
+//            JOptionPane.showMessageDialog(rootPane, "Entre todos los valores");
+//        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed
@@ -1036,12 +1035,12 @@ public class AddEmpleado extends javax.swing.JDialog {
         jRadioButton4.setSelected(true);
     }
 
-    private void showProyecto() {
+    private void showDepartamento() {
 
-        List<Proyecto> proyecto = empresa.getProyectos();
+        List<Departamento> departamentos = empresa.getDepartamentos();
 
-        for (Proyecto p : proyecto) {
-            jComboBox1.addItem(p.getNombre());
+        for (Departamento d : departamentos) {
+            jComboBox1.addItem(d.getNombre());
         }
 
     }

@@ -1,5 +1,6 @@
 package vista;
 
+import domain.Departamento;
 import utils.Empresa;
 
 public class FormMain extends javax.swing.JFrame {
@@ -8,14 +9,7 @@ public class FormMain extends javax.swing.JFrame {
      * Creates new form FormMain
      */
     private Empresa empresa = new Empresa(null, null, null);
-
-    public Empresa getEmpresa() {
-        return empresa;
-    }
-
-    public void setEmpresa(Empresa empresa) {
-        this.empresa = empresa;
-    }
+    private Departamento departamento = new Departamento();
 
     public FormMain() {
         initComponents();
@@ -49,9 +43,13 @@ public class FormMain extends javax.swing.JFrame {
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jSeparator3 = new javax.swing.JPopupMenu.Separator();
         jMenuItem4 = new javax.swing.JMenuItem();
+        jSeparator4 = new javax.swing.JPopupMenu.Separator();
         jMenu4 = new javax.swing.JMenu();
         jMenuItem2 = new javax.swing.JMenuItem();
+        jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
         jMenuItem5 = new javax.swing.JMenuItem();
@@ -212,6 +210,15 @@ public class FormMain extends javax.swing.JFrame {
 
         jMenu1.setText("Insertar");
 
+        jMenuItem3.setText("Añadir nuevo departamento");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+        jMenu1.add(jSeparator3);
+
         jMenuItem4.setText("Añadir nuevo proyecto");
         jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -219,6 +226,7 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
         jMenu1.add(jMenuItem4);
+        jMenu1.add(jSeparator4);
 
         jMenu4.setText("Empleado");
 
@@ -231,6 +239,7 @@ public class FormMain extends javax.swing.JFrame {
         jMenu4.add(jMenuItem2);
 
         jMenu1.add(jMenu4);
+        jMenu1.add(jSeparator5);
 
         jMenuItem1.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_L, java.awt.event.InputEvent.CTRL_MASK));
         jMenuItem1.setText("Salir");
@@ -293,7 +302,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa);
+        AddEmpleado addE = new AddEmpleado(empresa, departamento);
         addE.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -303,22 +312,22 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        RegistroProyectos regP = new RegistroProyectos(empresa);
+        RegistroProyectos regP = new RegistroProyectos(empresa, departamento);
         regP.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        RegistroEmpleados regE = new RegistroEmpleados(empresa);
+        RegistroEmpleados regE = new RegistroEmpleados(empresa, departamento);
         regE.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa);
+        AddEmpleado addE = new AddEmpleado(empresa, departamento);
         addE.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        RegistroEmpleados regE = new RegistroEmpleados(empresa);
+        RegistroEmpleados regE = new RegistroEmpleados(empresa, departamento);
         regE.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -332,7 +341,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        RegistroProyectos regP = new RegistroProyectos(empresa);
+        RegistroProyectos regP = new RegistroProyectos(empresa, departamento);
         regP.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -385,9 +394,14 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        FormShow formS = new FormShow(empresa);
+        FormShow formS = new FormShow(empresa, departamento);
         formS.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        AddDepartamento addDepa = new AddDepartamento(empresa);
+        addDepa.setVisible(true);
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -445,11 +459,15 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
+    private javax.swing.JPopupMenu.Separator jSeparator3;
+    private javax.swing.JPopupMenu.Separator jSeparator4;
+    private javax.swing.JPopupMenu.Separator jSeparator5;
     // End of variables declaration//GEN-END:variables
 }

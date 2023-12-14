@@ -8,14 +8,12 @@ import java.util.List;
 public interface IEmpresa {
 
     public boolean addDepartamento(Departamento departamentoAAñadir);
-
-    public boolean addProyectoADepartamento(Proyecto proyectoAAñadir, String departamentoARecibirProyecto);
-
-    public boolean addEmpleadoADepartamento(Empleado empleadoAAñadir, String departamentoTrabajaEmpleado);
     
+    public boolean adddProyecto(Proyecto proyectoAsignar);
+    
+    public boolean adddEmpleado(Empleado empleadoAsignar);
+            
     public List<Empleado> empleadosSinProyectos(String departamento);
-    
-    public boolean asignarEmpleadosAProyecto(List<Empleado> empleadosAAsignar, String nombreProyecto);
 
     public void asignarProyectoAEmpleado(Proyecto proyectoAsignar, List<Empleado> empleadosAAsignar);
     

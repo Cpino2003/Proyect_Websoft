@@ -12,8 +12,9 @@ public class Empleado {
     protected int diasTrabajados;
     protected NivelEscolar nivelEscolar;
     protected Proyecto proyectoAsignado;
+    protected Departamento departamentoTrabaja;
 
-    public Empleado(String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
+    public Empleado(String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado, Departamento departamentoTrabaja) {
         this.codigo = codigo;
         this.nombre = nombre;
         this.direccion = direccion;
@@ -22,6 +23,7 @@ public class Empleado {
         this.diasTrabajados = diasTrabajados;
         this.nivelEscolar = nivelEscolar;
         this.proyectoAsignado = proyectoAsignado;
+        this.departamentoTrabaja = departamentoTrabaja;
     }
 
     public String getCodigo() {
@@ -92,6 +94,15 @@ public class Empleado {
         this.proyectoAsignado = proyectoAsignado;
     }
 
+    public Departamento getDepartamentoTrabaja() {
+        return departamentoTrabaja;
+    }
+
+    public void setDepartamentoTrabaja(Departamento departamentoTrabaja) {
+        this.departamentoTrabaja = departamentoTrabaja;
+    }
+
+    
     //Metodo para calcular el salario del propio empleado
     public double salario() {
         double descuento = 1.3 * getDiasTrabajados();

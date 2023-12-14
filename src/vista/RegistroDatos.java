@@ -6,6 +6,7 @@
 package vista;
 
 import domain.Analista;
+import domain.Departamento;
 import domain.Empleado;
 import domain.JefeProyecto;
 import java.util.List;
@@ -19,22 +20,24 @@ import utils.Empresa;
 public class RegistroDatos extends javax.swing.JDialog {
 
     private Empresa empresa = null;
+    private Departamento departamento = null;
 
     public RegistroDatos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    public RegistroDatos(Empresa empresa) {
+    public RegistroDatos(Empresa empresa, Departamento departamento) {
         this(null, true);
         this.empresa = empresa;
+        this.departamento = departamento;
         this.setLocationRelativeTo(null);
         showTable();
     }
 
     public void showTable() {
         String[] colsNames = {"Nombre", "Ausencias", "Rol", "Descuento", "Jaba de aseo"};
-        List<Empleado> empleados = empresa.getEmpleados();
+        List<Empleado> empleados = departamento.getListaEmpleados();
 
         DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size());
 

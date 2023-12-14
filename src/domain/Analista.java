@@ -8,8 +8,8 @@ public class Analista extends GraduadoUniversitario{
     private String metodologiaSoftwareUtilizada;
     private int aproxClasesXDia;
 
-    public Analista(String metodologiaSoftwareUtilizada, int aproxClasesXDia, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
-        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado);
+    public Analista(String metodologiaSoftwareUtilizada, int aproxClasesXDia, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado, Departamento departamentoTrabaja) {
+        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado, departamentoTrabaja);
         this.metodologiaSoftwareUtilizada = metodologiaSoftwareUtilizada;
         this.aproxClasesXDia = aproxClasesXDia;
     }

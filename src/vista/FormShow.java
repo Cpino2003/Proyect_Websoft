@@ -6,6 +6,7 @@
 
 package vista;
 
+import domain.Departamento;
 import javax.swing.JOptionPane;
 import utils.Empresa;
 
@@ -16,12 +17,13 @@ import utils.Empresa;
  */
 public class FormShow extends javax.swing.JDialog {
 
-    Empresa empresa = null;
+    private Empresa empresa = null;
+    private Departamento departamento = null;
 
-    public FormShow(Empresa empresa) {
+    public FormShow(Empresa empresa, Departamento departamento) {
         this(null, true);
         this.empresa = empresa;
-                
+        this.departamento = departamento;        
     }
             
     public FormShow(java.awt.Frame parent, boolean modal) {
@@ -205,28 +207,28 @@ public class FormShow extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!empresa.getProyectos().isEmpty())
+        if(!departamento.getListaProyectosAsignados().isEmpty())
         JOptionPane.showMessageDialog(rootPane, empresa.proyectoMayorValor());
         else
         JOptionPane.showMessageDialog(rootPane, "No hay proyectos en la empresa");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(!empresa.getEmpleados().isEmpty())
+        if(!departamento.getListaEmpleados().isEmpty())
         JOptionPane.showMessageDialog(rootPane, empresa.trabajadorMayorSalario());
         else
         JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(!empresa.getEmpleados().isEmpty())
+        if(!departamento.getListaEmpleados().isEmpty())
         JOptionPane.showMessageDialog(rootPane, empresa.salarioTotal() + " " + "dólares");
         else
         JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        RegistroDatos regD = new RegistroDatos(empresa);
+        RegistroDatos regD = new RegistroDatos(empresa, departamento);
         regD.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
 

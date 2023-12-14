@@ -3,57 +3,21 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package vista;
 
-import domain.Departamento;
-import domain.Proyecto;
-import java.util.List;
-import javax.swing.table.DefaultTableModel;
-import utils.Empresa;
+package vista;
 
 /**
  *
  * @author Christian
  */
-public class RegistroProyectos extends javax.swing.JDialog {
+public class RegistroDepartamento extends javax.swing.JDialog {
 
-    private Empresa empresa = null;
-    private Departamento departamento = null;
-
-    public RegistroProyectos(java.awt.Frame parent, boolean modal) {
+    /**
+     * Creates new form RegistroDepartamento
+     */
+    public RegistroDepartamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public RegistroProyectos(Empresa empresa, Departamento departamento) {
-        this(null, true);
-        this.empresa = empresa;
-        this.departamento = departamento;
-        this.setLocationRelativeTo(null);              
-        showTable();
-
-    }
-
-    private void showTable() {
-        String[] colsNames = {"Nombre", "Plataforma a programar", "Empresa Contratista", "Fecha de Culminacion", "Valor Base"};
-        List<Proyecto> proyecto = departamento.getListaProyectosAsignados();
-        
-     
-        DefaultTableModel model = new DefaultTableModel(colsNames, proyecto.size());
-        
-        jTable1.setModel(model);
-        
-//        int row = 0;
-//        for(Proyecto p: proyecto){
-//             model.setValueAt(p.getNombre(), row, 0);
-//             model.setValueAt(p.getPlataformaAProgramar(), row, 1);
-//             model.setValueAt(p.getEmpresaContratista(), row, 2);
-//             model.setValueAt(p.getFechaCulminacion(), row, 3);
-//             model.setValueAt(p.getValorBase(), row, 4);            
-//             row++;
-//        }
-       
-        
     }
 
     /**
@@ -72,7 +36,7 @@ public class RegistroProyectos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Proyectos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Departamentos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable1.setBorder(new javax.swing.border.SoftBevelBorder(javax.swing.border.BevelBorder.RAISED));
@@ -89,7 +53,7 @@ public class RegistroProyectos extends javax.swing.JDialog {
         ));
         jScrollPane1.setViewportView(jTable1);
 
-        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 61, 710, 320));
+        jPanel1.add(jScrollPane1, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 61, 710, 470));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, 729, 10));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -100,7 +64,7 @@ public class RegistroProyectos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 401, Short.MAX_VALUE)
+            .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, 552, Short.MAX_VALUE)
         );
 
         pack();
@@ -123,20 +87,20 @@ public class RegistroProyectos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroProyectos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroDepartamento.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegistroProyectos dialog = new RegistroProyectos(new javax.swing.JFrame(), true);
+                RegistroDepartamento dialog = new RegistroDepartamento(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

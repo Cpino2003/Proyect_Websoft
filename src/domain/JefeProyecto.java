@@ -7,8 +7,8 @@ public class JefeProyecto extends GraduadoUniversitario {
     private int añosExperiencia;
     private int proyectosDirigidos;
 
-    public JefeProyecto(int añosExperiencia, int proyectosDirigidos, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
-        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado);
+    public JefeProyecto(int añosExperiencia, int proyectosDirigidos, String titulo, String universidadEstudio, int añoGraduacion, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado, Departamento departamentoTrabaja) {
+        super(titulo, universidadEstudio, añoGraduacion, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado, departamentoTrabaja);
         this.añosExperiencia = añosExperiencia;
         this.proyectosDirigidos = proyectosDirigidos;
     }

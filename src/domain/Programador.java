@@ -8,8 +8,8 @@ public class Programador extends Empleado {
     private String plataformaEspecializada;
     private boolean cursoGraficoAprobado;
 
-    public Programador(int aproxLineasCodigoXHora, String plataformaEspecializada, boolean cursoGraficoAprobado, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado) {
-        super(codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado);
+    public Programador(int aproxLineasCodigoXHora, String plataformaEspecializada, boolean cursoGraficoAprobado, String codigo, String nombre, String direccion, int telefono, int ausencias, int diasTrabajados, NivelEscolar nivelEscolar, Proyecto proyectoAsignado, Departamento departamentoTrabaja) {
+        super(codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, proyectoAsignado, departamentoTrabaja);
         this.aproxLineasCodigoXHora = aproxLineasCodigoXHora;
         this.plataformaEspecializada = plataformaEspecializada;
         this.cursoGraficoAprobado = cursoGraficoAprobado;
