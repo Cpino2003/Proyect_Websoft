@@ -1,5 +1,7 @@
 package domain;
 
+
+
 public class Departamento {
 
     private String nombre;

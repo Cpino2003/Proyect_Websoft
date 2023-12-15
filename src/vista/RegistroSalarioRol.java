@@ -6,7 +6,6 @@
 package vista;
 
 import domain.Analista;
-import domain.Departamento;
 import domain.Empleado;
 import domain.JefeProyecto;
 import java.util.List;
@@ -17,56 +16,20 @@ import utils.Empresa;
  *
  * @author Christian
  */
-public class RegistroDatos extends javax.swing.JDialog {
+public class RegistroSalarioRol extends javax.swing.JDialog {
 
     private Empresa empresa = null;
-   
 
-    public RegistroDatos(java.awt.Frame parent, boolean modal) {
+    public RegistroSalarioRol(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
-    }
-
-    public RegistroDatos(Empresa empresa) {
-        this(null, true);
-        this.empresa = empresa;        
         this.setLocationRelativeTo(null);
-        showTable();
     }
 
-    public void showTable() {
-        String[] colsNames = {"Nombre", "Ausencias", "Rol", "Descuento", "Jaba de aseo"};
-        List<Empleado> empleados = empresa.getEmpleados();
-
-        DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size());
-
-        jTable5.setModel(model);
-
-        int row = 0;
-        for (Empleado e : empleados) {
-            model.setValueAt(e.getNombre(), row, 0);
-            model.setValueAt(e.getAusencias(), row, 1);
-            
-            if (e instanceof JefeProyecto) {
-                model.setValueAt("Jefe de Proyecto", row, 2);
-            } else if (e instanceof Analista) {
-                model.setValueAt("Analista", row, 2);
-            } else {
-                model.setValueAt("Programador", row, 2);
-            }
-            
-            if(e instanceof Empleado){
-                model.setValueAt(empresa.trabajadorDescuentoAusencia(e.getNombre()) + "%" , row, 3);
-            }
-            if(e instanceof Empleado){
-               int j = empresa.trabajadorJabaAseo(e.getNombre());
-                if (j == 1){
-                    model.setValueAt("SI", row, 4);
-                } else 
-                    model.setValueAt("NO", row, 4); 
-            }
-            row++;
-        }
+    public RegistroSalarioRol(Empresa empresa) {
+        this(null, true);
+        this.empresa = empresa;
+        showTable();
     }
 
     /**
@@ -84,7 +47,7 @@ public class RegistroDatos extends javax.swing.JDialog {
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de datos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de salario de empleados por rol", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         jTable5.setModel(new javax.swing.table.DefaultTableModel(
@@ -105,7 +68,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         });
         jScrollPane5.setViewportView(jTable5);
 
-        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 20, 847, 468));
+        jPanel5.add(jScrollPane5, new org.netbeans.lib.awtextra.AbsoluteConstraints(16, 30, 847, 468));
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -115,7 +78,7 @@ public class RegistroDatos extends javax.swing.JDialog {
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 499, Short.MAX_VALUE)
+            .addComponent(jPanel5, javax.swing.GroupLayout.DEFAULT_SIZE, 512, Short.MAX_VALUE)
         );
 
         pack();
@@ -124,6 +87,31 @@ public class RegistroDatos extends javax.swing.JDialog {
     private void jTable5ComponentRemoved(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_jTable5ComponentRemoved
         // TODO add your handling code here:
     }//GEN-LAST:event_jTable5ComponentRemoved
+
+    private void showTable() {
+        String[] colsNames = {"Nombre", "Rol", "Salario"};
+        List<Empleado> empleados = empresa.getEmpleados();
+
+        DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size());
+
+        jTable5.setModel(model);
+
+        int row = 0;
+        for (Empleado e : empleados) {
+
+            model.setValueAt(e.getNombre(), row, 0);
+            if (e instanceof JefeProyecto) {
+                model.setValueAt("Jefe de Proyecto", row, 1);
+            } else if (e instanceof Analista) {
+                model.setValueAt("Analista", row, 1);
+            } else {
+                model.setValueAt("Programador", row, 1);
+            }
+            model.setValueAt(e.salario(), row, 2);
+            row++;
+        }
+
+    }
 
     /**
      * @param args the command line arguments
@@ -142,20 +130,20 @@ public class RegistroDatos extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(RegistroDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroSalarioRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(RegistroDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroSalarioRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(RegistroDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroSalarioRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(RegistroDatos.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(RegistroSalarioRol.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                RegistroDatos dialog = new RegistroDatos(new javax.swing.JFrame(), true);
+                RegistroSalarioRol dialog = new RegistroSalarioRol(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {

@@ -17,7 +17,6 @@ import utils.*;
 public class AddEmpleado extends javax.swing.JDialog {
 
     private Empresa empresa = null;
-    private Departamento departamento = null;
 
     public AddEmpleado(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -29,14 +28,11 @@ public class AddEmpleado extends javax.swing.JDialog {
         jRadioButton4.setSelected(true);
     }
 
-    public AddEmpleado(Empresa empresa, Departamento departamento) {
+    public AddEmpleado(Empresa empresa) {
         this(null, true);
         this.empresa = empresa;
-        this.departamento = departamento;
         showDepartamento();
     }
-    
-    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -756,59 +752,64 @@ public class AddEmpleado extends javax.swing.JDialog {
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-//        if (checkComponents()) {
-//            String codigo = jTextField1.getText();
-//            String nombre = jTextField2.getText();
-//            String direccion = jTextField3.getText();
-//            int telefono = Integer.parseInt(jTextField4.getText());
-//            int ausencias = Integer.parseInt(jTextField5.getText());
-//            int diasTrabajados = Integer.parseInt(jTextField6.getText());
-//            String nombreProyecto = (String) jComboBox1.getSelectedItem();
-//
-//            if (jRadioButton2.isSelected()) {
-//                int expYears = Integer.parseInt(jTextField11.getText());
-//                int cantProyectos = Integer.parseInt(jTextField10.getText());
-//                int gradYear = Integer.parseInt(jTextField9.getText());
-//                String titulo = jTextField16.getText();
-//                JefeProyecto jefeP = new JefeProyecto(expYears, cantProyectos, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null);
-//                empresa.addEmpleadoADepartamento(jefeP, nombreProyecto);
-//            }
-//
-//            if (jRadioButton1.isSelected()) {
-//                String metodologiaSoftwareUtilizada = jTextField14.getText();
-//                int aproxClasesXDia = Integer.parseInt(jTextField15.getText());
-//                int gradYear = Integer.parseInt(jTextField13.getText());
-//                String titulo = jTextField17.getText();
-//                Analista analista = new Analista(metodologiaSoftwareUtilizada, aproxClasesXDia, nombreProyecto, titulo, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null);
-//                empresa.addEmpleadoADepartamento(analista, nombreProyecto);
-//            }
-//
-//            if (jRadioButton3.isSelected()) {
-//                int lineasCode = Integer.parseInt(jTextField18.getText());
-//                String plataforma = jTextField19.getText();
-//                int n = jComboBox2.getSelectedIndex();
-//                NivelEscolar nivelEscolar = NivelEscolar.TecnicoMedio;
-//                switch (n) {
-//                    case 1:
-//                        nivelEscolar = NivelEscolar.Estudiante;
-//                        break;
-//                }
-//                boolean cursoAprobado = true;
-//                if (jRadioButton4.isSelected()) {
-//                    cursoAprobado = true;
-//                } else if (jRadioButton5.isSelected()) {
-//                    cursoAprobado = false;
-//                }
-//
-//                Programador programador = new Programador(lineasCode, plataforma, cursoAprobado, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, null);
-//                empresa.addEmpleadoADepartamento(programador, nombreProyecto);
-//            }
-//            JOptionPane.showMessageDialog(rootPane, "El empleado se ha añadido de forma satisfactoria");
-//
-//            clear();
-//        } else {
-//            JOptionPane.showMessageDialog(rootPane, "Entre todos los valores");
-//        }
+        if (checkComponents()) {
+            String codigo = jTextField1.getText();
+            String nombre = jTextField2.getText();
+            String direccion = jTextField3.getText();
+            int telefono = Integer.parseInt(jTextField4.getText());
+            int ausencias = Integer.parseInt(jTextField5.getText());
+            int diasTrabajados = Integer.parseInt(jTextField6.getText());            
+            String nombreDepar = (String) jComboBox1.getSelectedItem();
+            Departamento departamentoAsignado = empresa.buscarDepartamento(nombreDepar);
+              
+           
+
+            if (jRadioButton2.isSelected()) {
+                int expYears = Integer.parseInt(jTextField11.getText());
+                int cantProyectos = Integer.parseInt(jTextField10.getText());
+                int gradYear = Integer.parseInt(jTextField9.getText());
+                String titulo = jTextField16.getText();
+                String universidadEstudio = jTextField8.getText();
+                JefeProyecto jefeP = new JefeProyecto(expYears, cantProyectos, titulo, universidadEstudio, gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null, departamentoAsignado);
+                empresa.adddEmpleado(jefeP);
+            }
+
+            if (jRadioButton1.isSelected()) {
+                String metodologiaSoftwareUtilizada = jTextField14.getText();
+                int aproxClasesXDia = Integer.parseInt(jTextField15.getText());
+                int gradYear = Integer.parseInt(jTextField13.getText());
+                String titulo = jTextField17.getText();
+                String universidadEstudio = jTextField8.getText();
+                Analista analista = new Analista(metodologiaSoftwareUtilizada, aproxClasesXDia, titulo,universidadEstudio , gradYear, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, NivelEscolar.GraduadoUniversitario, null, departamentoAsignado);
+                empresa.adddEmpleado(analista);
+            }
+
+            if (jRadioButton3.isSelected()) {
+                int lineasCode = Integer.parseInt(jTextField18.getText());
+                String plataforma = jTextField19.getText();
+                int n = jComboBox2.getSelectedIndex();
+                NivelEscolar nivelEscolar = NivelEscolar.TecnicoMedio;
+                switch (n) {
+                    case 1:
+                        nivelEscolar = NivelEscolar.Estudiante;
+                        break;
+                }
+                boolean cursoAprobado = true;
+                if (jRadioButton4.isSelected()) {
+                    cursoAprobado = true;
+                } else if (jRadioButton5.isSelected()) {
+                    cursoAprobado = false;
+                }
+
+                Programador programador = new Programador(lineasCode, plataforma, cursoAprobado, codigo, nombre, direccion, telefono, ausencias, diasTrabajados, nivelEscolar, null, departamentoAsignado);
+                empresa.adddEmpleado(programador);
+            }
+            JOptionPane.showMessageDialog(rootPane, "El empleado se ha añadido de forma satisfactoria");
+
+            clear();
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "Entre todos los valores");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jTextField11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField11ActionPerformed

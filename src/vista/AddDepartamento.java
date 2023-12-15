@@ -6,9 +6,6 @@
 package vista;
 
 import domain.Departamento;
-import domain.Empleado;
-import domain.Proyecto;
-import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import utils.Empresa;
 
@@ -28,6 +25,7 @@ public class AddDepartamento extends javax.swing.JDialog {
     public AddDepartamento(Empresa empresa){
         this(null, true);
         this.empresa = empresa;
+        this.setLocationRelativeTo(null);
     }
 
     /**

@@ -6,7 +6,6 @@
 package vista;
 
 import domain.Analista;
-import domain.Departamento;
 import domain.Empleado;
 import domain.JefeProyecto;
 import java.util.List;
@@ -20,18 +19,16 @@ import utils.Empresa;
  */
 public class RegistroEmpleados extends javax.swing.JDialog {
     
-    private Empresa empresa = null;
-    private Departamento departamento = null;
+    private Empresa empresa = null;    
     
     public RegistroEmpleados(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
     
-    public RegistroEmpleados(Empresa empresa, Departamento departamento) {
+    public RegistroEmpleados(Empresa empresa) {
         this(null, true);
-        this.empresa = empresa;
-        this.departamento = departamento;
+        this.empresa = empresa;        
         this.setLocationRelativeTo(null);
         showTable();
         
@@ -39,31 +36,34 @@ public class RegistroEmpleados extends javax.swing.JDialog {
     
     private void showTable() {
         String[] colsNames = {"Codigo", "Nombre", "Dirección", "Teléfono", "Ausencias", "Días Trabajados", "Proyecto", "Rol", "Nivel Escolar"};
-        List<Empleado> empleados = departamento.getListaEmpleados();
+        List<Empleado> empleados = empresa.getEmpleados();
         
         DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size());
         
         jTable5.setModel(model);
         
-//        int row = 0;
-//        for (Empleado e : empleados) {
-//            model.setValueAt(e.getCodigo(), row, 0);
-//            model.setValueAt(e.getNombre(), row, 1);
-//            model.setValueAt(e.getDireccion(), row, 2);
-//            model.setValueAt(e.getTelefono(), row, 3);
-//            model.setValueAt(e.getAusencias(), row, 4);
-//            model.setValueAt(e.getDiasTrabajados(), row, 5);
-//            model.setValueAt(e.getProyectoAsignado().getNombre(), row, 6);
-//            if (e instanceof JefeProyecto) {
-//                model.setValueAt("Jefe de Proyecto", row, 7);
-//            } else if (e instanceof Analista) {
-//                model.setValueAt("Analista", row, 7);
-//            } else {
-//                model.setValueAt("Programador", row, 7);
-//            }
-//            model.setValueAt(e.getNivelEscolar(), row, 8);
-//            row++;
-//        }
+        int row = 0;
+        for (Empleado e : empleados) {
+            model.setValueAt(e.getCodigo(), row, 0);
+            model.setValueAt(e.getNombre(), row, 1);
+            model.setValueAt(e.getDireccion(), row, 2);
+            model.setValueAt(e.getTelefono(), row, 3);
+            model.setValueAt(e.getAusencias(), row, 4);
+            model.setValueAt(e.getDiasTrabajados(), row, 5);
+            if(e.getProyectoAsignado() != null)
+                model.setValueAt(e.getProyectoAsignado().getNombre(), row, 6);
+            else
+                model.setValueAt("Sin Proyecto Asignado", row, 6);
+            if (e instanceof JefeProyecto) {
+                model.setValueAt("Jefe de Proyecto", row, 7);
+            } else if (e instanceof Analista) {
+                model.setValueAt("Analista", row, 7);
+            } else {
+                model.setValueAt("Programador", row, 7);
+            }
+            model.setValueAt(e.getNivelEscolar(), row, 8);
+            row++;
+        }
         
     }
 
@@ -148,20 +148,20 @@ public class RegistroEmpleados extends javax.swing.JDialog {
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         String nombre = jTextField1.getText();
         int indice = -1;
-        for (int i = 0; i < departamento.getListaEmpleados().size(); i++) {
-            Empleado empleado = departamento.getListaEmpleados().get(i);
+        for (int i = 0; i < empresa.getEmpleados().size(); i++) {
+            Empleado empleado = empresa.getEmpleados().get(i);
             if (empleado.getNombre().equals(nombre)) {
                 indice = i;
                 break;
             }
         }
         if (indice != -1) {
-            departamento.getListaEmpleados().remove(indice);
+            empresa.getEmpleados().remove(indice);
             DefaultTableModel model = (DefaultTableModel) jTable5.getModel();
             model.removeRow(indice);
             int opcion = JOptionPane.showConfirmDialog(rootPane, "Desea agregar otro empleado", "Confirmacion", JOptionPane.YES_NO_OPTION);
             if (opcion == JOptionPane.YES_OPTION) {
-                AddEmpleado addE = new AddEmpleado(empresa, departamento);
+                AddEmpleado addE = new AddEmpleado(empresa);
                 addE.setVisible(true);
             }
         } else {

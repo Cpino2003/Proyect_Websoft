@@ -3,13 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vista;
 
 import domain.Departamento;
 import javax.swing.JOptionPane;
 import utils.Empresa;
-
 
 /**
  *
@@ -18,14 +16,13 @@ import utils.Empresa;
 public class FormShow extends javax.swing.JDialog {
 
     private Empresa empresa = null;
-    private Departamento departamento = null;
 
-    public FormShow(Empresa empresa, Departamento departamento) {
+    public FormShow(Empresa empresa) {
         this(null, true);
         this.empresa = empresa;
-        this.departamento = departamento;        
+
     }
-            
+
     public FormShow(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
@@ -108,10 +105,15 @@ public class FormShow extends javax.swing.JDialog {
         });
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        jLabel5.setText("jLabel5");
+        jLabel5.setText("Mostrar salario de empleados por rol:");
 
         jButton5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jButton5.setText("Mostrar");
+        jButton5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton5ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,7 +150,7 @@ public class FormShow extends javax.swing.JDialog {
                         .addComponent(jButton1)
                         .addGap(0, 16, Short.MAX_VALUE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 198, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(jLabel5)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jButton5)
                         .addGap(18, 18, 18)))
@@ -207,30 +209,38 @@ public class FormShow extends javax.swing.JDialog {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        if(!departamento.getListaProyectosAsignados().isEmpty())
-        JOptionPane.showMessageDialog(rootPane, empresa.proyectoMayorValor());
-        else
-        JOptionPane.showMessageDialog(rootPane, "No hay proyectos en la empresa");
+        if (!empresa.getProyectos().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, empresa.proyectoMayorValor());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay proyectos en la empresa");
+        }
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        if(!departamento.getListaEmpleados().isEmpty())
-        JOptionPane.showMessageDialog(rootPane, empresa.trabajadorMayorSalario());
-        else
-        JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
+        if (!empresa.getEmpleados().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, empresa.trabajadorMayorSalario());
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
+        }
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        if(!departamento.getListaEmpleados().isEmpty())
-        JOptionPane.showMessageDialog(rootPane, empresa.salarioTotal() + " " + "dólares");
-        else
-        JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
+        if (!empresa.getEmpleados().isEmpty()) {
+            JOptionPane.showMessageDialog(rootPane, empresa.salarioTotal() + " " + "dólares");
+        } else {
+            JOptionPane.showMessageDialog(rootPane, "No hay ningún empleado en la empresa");
+        }
     }//GEN-LAST:event_jButton3ActionPerformed
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
-        RegistroDatos regD = new RegistroDatos(empresa, departamento);
+        RegistroDatos regD = new RegistroDatos(empresa);
         regD.setVisible(true);
     }//GEN-LAST:event_jButton4ActionPerformed
+
+    private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
+       RegistroSalarioRol regSRol = new RegistroSalarioRol(empresa);
+       regSRol.setVisible(true);
+    }//GEN-LAST:event_jButton5ActionPerformed
 
     /**
      * @param args the command line arguments

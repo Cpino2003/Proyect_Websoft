@@ -18,17 +18,16 @@ import utils.Empresa;
 public class RegistroProyectos extends javax.swing.JDialog {
 
     private Empresa empresa = null;
-    private Departamento departamento = null;
-
+    
     public RegistroProyectos(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
     }
 
-    public RegistroProyectos(Empresa empresa, Departamento departamento) {
+    public RegistroProyectos(Empresa empresa) {
         this(null, true);
         this.empresa = empresa;
-        this.departamento = departamento;
+        
         this.setLocationRelativeTo(null);              
         showTable();
 
@@ -36,22 +35,22 @@ public class RegistroProyectos extends javax.swing.JDialog {
 
     private void showTable() {
         String[] colsNames = {"Nombre", "Plataforma a programar", "Empresa Contratista", "Fecha de Culminacion", "Valor Base"};
-        List<Proyecto> proyecto = departamento.getListaProyectosAsignados();
+        List<Proyecto> proyecto = empresa.getProyectos();
         
      
         DefaultTableModel model = new DefaultTableModel(colsNames, proyecto.size());
         
         jTable1.setModel(model);
         
-//        int row = 0;
-//        for(Proyecto p: proyecto){
-//             model.setValueAt(p.getNombre(), row, 0);
-//             model.setValueAt(p.getPlataformaAProgramar(), row, 1);
-//             model.setValueAt(p.getEmpresaContratista(), row, 2);
-//             model.setValueAt(p.getFechaCulminacion(), row, 3);
-//             model.setValueAt(p.getValorBase(), row, 4);            
-//             row++;
-//        }
+        int row = 0;
+        for(Proyecto p: proyecto){
+             model.setValueAt(p.getNombre(), row, 0);
+             model.setValueAt(p.getPlataformaAProgramar(), row, 1);
+             model.setValueAt(p.getEmpresaContratista(), row, 2);
+             model.setValueAt(p.getFechaCulminacion(), row, 3);
+             model.setValueAt(p.getValorBase(), row, 4);            
+             row++;
+        }
        
         
     }

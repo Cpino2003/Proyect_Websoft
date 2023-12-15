@@ -16,7 +16,7 @@ public interface IEmpresa {
     public List<Empleado> empleadosSinProyectos(String departamento);
 
     public void asignarProyectoAEmpleado(Proyecto proyectoAsignar, List<Empleado> empleadosAAsignar);
-    
+
     public String trabajadorMayorSalario();
 
     public double salarioTotal();
@@ -26,6 +26,10 @@ public interface IEmpresa {
     public int trabajadorJabaAseo(String siEmpleadoTieneJavaAseo);
 
     public int trabajadorDescuentoAusencia(String EmpleadoABuscarSuCantidadAusencias);
+    
+    public Empleado buscarEmpleado(String empleadoABuscar);
+    
+    public Departamento buscarDepartamento(String departamentoBuscar);
 
 
 }

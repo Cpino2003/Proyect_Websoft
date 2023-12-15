@@ -1,6 +1,5 @@
 package vista;
 
-import domain.Departamento;
 import utils.Empresa;
 
 public class FormMain extends javax.swing.JFrame {
@@ -9,7 +8,6 @@ public class FormMain extends javax.swing.JFrame {
      * Creates new form FormMain
      */
     private Empresa empresa = new Empresa(null, null, null);
-    private Departamento departamento = new Departamento();
 
     public FormMain() {
         initComponents();
@@ -39,6 +37,9 @@ public class FormMain extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jLabel6 = new javax.swing.JLabel();
         jButton6 = new javax.swing.JButton();
+        jLabel7 = new javax.swing.JLabel();
+        jButton7 = new javax.swing.JButton();
+        jButton8 = new javax.swing.JButton();
         Fondo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -52,9 +53,9 @@ public class FormMain extends javax.swing.JFrame {
         jSeparator5 = new javax.swing.JPopupMenu.Separator();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenu2 = new javax.swing.JMenu();
+        jMenuItem7 = new javax.swing.JMenuItem();
         jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem6 = new javax.swing.JMenuItem();
-        jMenu3 = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -91,6 +92,7 @@ public class FormMain extends javax.swing.JFrame {
         jSeparator2.setBackground(new java.awt.Color(0, 0, 0));
         jPanel1.add(jSeparator2, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 460, 630, 10));
 
+        jButton1.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngwing.com.png"))); // NOI18N
         jButton1.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton1.setName("Agregar nuevo empleado"); // NOI18N
         jButton1.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -108,16 +110,17 @@ public class FormMain extends javax.swing.JFrame {
                 jButton1ActionPerformed(evt);
             }
         });
-        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 100, 70, 60));
+        jPanel1.add(jButton1, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 210, 70, 60));
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel3.setText("Agregar nuevo Empleado:");
-        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 70, -1, -1));
+        jPanel1.add(jLabel3, new org.netbeans.lib.awtextra.AbsoluteConstraints(100, 180, -1, -1));
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel4.setText("Agregar nuevo proyecto:");
         jPanel1.add(jLabel4, new org.netbeans.lib.awtextra.AbsoluteConstraints(410, 70, -1, -1));
 
+        jButton2.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngwing.com (1).png"))); // NOI18N
         jButton2.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton2.setName("Agregar nuevo proyecto"); // NOI18N
         jButton2.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -139,8 +142,9 @@ public class FormMain extends javax.swing.JFrame {
 
         jLabel5.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         jLabel5.setText("Registros:");
-        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(110, 350, -1, -1));
+        jPanel1.add(jLabel5, new org.netbeans.lib.awtextra.AbsoluteConstraints(157, 350, 60, -1));
 
+        jButton3.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngwing.com (2).png"))); // NOI18N
         jButton3.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton3.setName("Registro de Empleados"); // NOI18N
         jButton3.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -160,6 +164,7 @@ public class FormMain extends javax.swing.JFrame {
         });
         jPanel1.add(jButton3, new org.netbeans.lib.awtextra.AbsoluteConstraints(60, 380, 70, 60));
 
+        jButton5.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngwing.com (3).png"))); // NOI18N
         jButton5.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton5.setName("Registro de proyectos"); // NOI18N
         jButton5.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -183,6 +188,7 @@ public class FormMain extends javax.swing.JFrame {
         jLabel6.setText("Opciones:");
         jPanel1.add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(490, 350, 60, -1));
 
+        jButton6.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/pngegg.png"))); // NOI18N
         jButton6.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
         jButton6.setName("Opciones"); // NOI18N
         jButton6.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
@@ -201,6 +207,39 @@ public class FormMain extends javax.swing.JFrame {
             }
         });
         jPanel1.add(jButton6, new org.netbeans.lib.awtextra.AbsoluteConstraints(480, 380, 70, 60));
+
+        jLabel7.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        jLabel7.setText("Añadir nuevo Departamento:");
+        jPanel1.add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 70, -1, -1));
+
+        jButton7.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/—Pngtree—skyscraper illustrated and colored in_5504059.png"))); // NOI18N
+        jButton7.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton7.setName("Añadir nuevo Departamento"); // NOI18N
+        jButton7.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton7MouseMoved(evt);
+            }
+        });
+        jButton7.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton7MouseExited(evt);
+            }
+        });
+        jButton7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton7ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton7, new org.netbeans.lib.awtextra.AbsoluteConstraints(140, 100, 70, 60));
+
+        jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Captura de pantalla (18).png"))); // NOI18N
+        jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton8.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton8ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 70, 60));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background-1409025_960_720.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -254,6 +293,14 @@ public class FormMain extends javax.swing.JFrame {
 
         jMenu2.setText("Reporte");
 
+        jMenuItem7.setText("Registro de departamentos");
+        jMenuItem7.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem7ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem7);
+
         jMenuItem5.setText("Registro de proyectos");
         jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -271,9 +318,6 @@ public class FormMain extends javax.swing.JFrame {
         jMenu2.add(jMenuItem6);
 
         jMenuBar1.add(jMenu2);
-
-        jMenu3.setText("Ayuda");
-        jMenuBar1.add(jMenu3);
 
         setJMenuBar(jMenuBar1);
 
@@ -302,7 +346,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa, departamento);
+        AddEmpleado addE = new AddEmpleado(empresa);
         addE.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -312,22 +356,22 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem4ActionPerformed
 
     private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
-        RegistroProyectos regP = new RegistroProyectos(empresa, departamento);
+        RegistroProyectos regP = new RegistroProyectos(empresa);
         regP.setVisible(true);
     }//GEN-LAST:event_jMenuItem5ActionPerformed
 
     private void jMenuItem6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem6ActionPerformed
-        RegistroEmpleados regE = new RegistroEmpleados(empresa, departamento);
+        RegistroEmpleados regE = new RegistroEmpleados(empresa);
         regE.setVisible(true);
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa, departamento);
+        AddEmpleado addE = new AddEmpleado(empresa);
         addE.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
-        RegistroEmpleados regE = new RegistroEmpleados(empresa, departamento);
+        RegistroEmpleados regE = new RegistroEmpleados(empresa);
         regE.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
@@ -341,7 +385,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton2ActionPerformed
 
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
-        RegistroProyectos regP = new RegistroProyectos(empresa, departamento);
+        RegistroProyectos regP = new RegistroProyectos(empresa);
         regP.setVisible(true);
     }//GEN-LAST:event_jButton5ActionPerformed
 
@@ -394,7 +438,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jButton4MouseExited
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
-        FormShow formS = new FormShow(empresa, departamento);
+        FormShow formS = new FormShow(empresa);
         formS.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
@@ -402,6 +446,29 @@ public class FormMain extends javax.swing.JFrame {
         AddDepartamento addDepa = new AddDepartamento(empresa);
         addDepa.setVisible(true);
     }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuItem7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem7ActionPerformed
+        RegistroDepartamento regD = new RegistroDepartamento(empresa);
+        regD.setVisible(true);
+    }//GEN-LAST:event_jMenuItem7ActionPerformed
+
+    private void jButton7MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jButton7MouseExited
+
+    private void jButton7MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton7MouseMoved
+        jLabel1.setText(jButton7.getName());
+    }//GEN-LAST:event_jButton7MouseMoved
+
+    private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
+        AddDepartamento addDepa = new AddDepartamento(empresa);
+        addDepa.setVisible(true);
+    }//GEN-LAST:event_jButton7ActionPerformed
+
+    private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
+        RegistroDepartamento regD = new RegistroDepartamento(empresa);
+        regD.setVisible(true);        
+    }//GEN-LAST:event_jButton8ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -446,15 +513,17 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
+    private javax.swing.JButton jButton7;
+    private javax.swing.JButton jButton8;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
-    private javax.swing.JMenu jMenu3;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
@@ -463,6 +532,7 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuItem6;
+    private javax.swing.JMenuItem jMenuItem7;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;

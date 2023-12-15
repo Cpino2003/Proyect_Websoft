@@ -3,8 +3,12 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package vista;
+
+import domain.Departamento;
+import java.util.List;
+import javax.swing.table.DefaultTableModel;
+import utils.Empresa;
 
 /**
  *
@@ -12,12 +16,36 @@ package vista;
  */
 public class RegistroDepartamento extends javax.swing.JDialog {
 
-    /**
-     * Creates new form RegistroDepartamento
-     */
+    private Empresa empresa = null;
+
     public RegistroDepartamento(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
+    }
+
+    public RegistroDepartamento(Empresa empresa) {
+        this(null, true);
+        this.empresa = empresa;
+        this.setLocationRelativeTo(null);
+        showTable();
+    }
+
+    private void showTable() {
+        String[] colsNames = {"Nombre", "Epecialidad", "Cantidad de trabajadores"};
+        List<Departamento> departamentos = empresa.getDepartamentos();
+
+        DefaultTableModel model = new DefaultTableModel(colsNames, departamentos.size());
+
+        jTable1.setModel(model);
+
+        int row = 0;
+        for (Departamento d : departamentos) {
+            model.setValueAt(d.getNombre(), row, 0);
+            model.setValueAt(d.getEspecialidad(), row, 1);
+            model.setValueAt(d.getCantidadTrabajadores(), row, 2);
+
+        }
+
     }
 
     /**

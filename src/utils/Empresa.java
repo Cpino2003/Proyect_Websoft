@@ -18,7 +18,6 @@ public class Empresa implements IEmpresa {
         this.proyectos = new ArrayList<>();
         this.empleados = new ArrayList<>();
     }
-    
 
     public List<Departamento> getDepartamentos() {
         return departamentos;
@@ -50,16 +49,16 @@ public class Empresa implements IEmpresa {
         return departamentos.add(departamentoAAñadir);
 
     }
-    
+
     //Metodo para añadir proyecto
     @Override
-    public boolean adddProyecto(Proyecto proyectoAsignar){
+    public boolean adddProyecto(Proyecto proyectoAsignar) {
         return proyectos.add(proyectoAsignar);
     }
-    
+
     //Metodo para añadir empleado
     @Override
-    public boolean adddEmpleado(Empleado empleadoAsignar){
+    public boolean adddEmpleado(Empleado empleadoAsignar) {
         return empleados.add(empleadoAsignar);
     }
 
@@ -71,10 +70,10 @@ public class Empresa implements IEmpresa {
         if (buscarDepartamento(departamento) != null) {
             for (Empleado empleado : empleados) {
                 if (empleado.getProyectoAsignado() == null && empleado.getDepartamentoTrabaja().getNombre().equals(departamento)) {
-                    listaEmpleadosSinProyecto.add(empleado);
-                    return listaEmpleadosSinProyecto;
+                    listaEmpleadosSinProyecto.add(empleado);            
                 }
             }
+            return listaEmpleadosSinProyecto;
         }
         return null;
     }
@@ -159,7 +158,8 @@ public class Empresa implements IEmpresa {
     }
 
     //Metodo para buscar los datos de un empleado
-    private Empleado buscarEmpleado(String empleadoABuscar) {
+    @Override
+    public Empleado buscarEmpleado(String empleadoABuscar) {
 
         for (Empleado empleado : empleados) {
             if (empleadoABuscar.equals(empleado.getNombre())) {
@@ -170,7 +170,8 @@ public class Empresa implements IEmpresa {
     }
 
     //Metodo para buscar los datos de un Departamento
-    private Departamento buscarDepartamento(String departamentoBuscar) {
+    @Override
+    public Departamento buscarDepartamento(String departamentoBuscar) {
 
         for (Departamento departamento : departamentos) {
             if (departamentoBuscar.equals(departamento.getNombre())) {
