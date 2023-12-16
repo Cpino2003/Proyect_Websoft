@@ -6,6 +6,7 @@
 package vista;
 
 import domain.Empleado;
+import domain.Proyecto;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -22,7 +23,7 @@ public class AsignarEmpleadosProyecto extends javax.swing.JDialog {
      * Creates new form AsignarEmpleadosProyecto
      */
     private Empresa empresa = null;
-    private int row = 0;
+    private String proyecto;
 
     public AsignarEmpleadosProyecto(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
@@ -32,9 +33,18 @@ public class AsignarEmpleadosProyecto extends javax.swing.JDialog {
     public AsignarEmpleadosProyecto(Empresa empresa) {
         this(null, true);
         this.empresa = empresa;
-        showTable1();
-        showTable2();
-   }
+        boolean verify = false;
+        while (verify == false) {
+            proyecto = JOptionPane.showInputDialog(rootPane, "Ingrese el nombre del proyecto");
+            if (proyecto != null && !proyecto.isEmpty() && empresa.buscarProyecto(proyecto) != null) {
+                showTable1();
+                showTable2();
+                verify = true;
+            } else {
+                JOptionPane.showMessageDialog(rootPane, "Entre el nombre de la empresa correctamente");
+            }
+        }
+    }
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -55,8 +65,9 @@ public class AsignarEmpleadosProyecto extends javax.swing.JDialog {
         jButton1 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulario para asignar empleados a un proyecto");
 
-        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar proyecto a empleados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Asignar empleados a un proyecto", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 11))); // NOI18N
 
         jTable1.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -109,37 +120,38 @@ public class AsignarEmpleadosProyecto extends javax.swing.JDialog {
         jPanel3.setLayout(jPanel3Layout);
         jPanel3Layout.setHorizontalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+            .addGroup(jPanel3Layout.createSequentialGroup()
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 35, Short.MAX_VALUE)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 309, Short.MAX_VALUE)
+                        .addComponent(jButton1))
+                    .addGroup(jPanel3Layout.createSequentialGroup()
+                        .addGap(27, 27, 27)
+                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
                             .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 75, javax.swing.GroupLayout.PREFERRED_SIZE))
-                        .addGap(26, 26, 26)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 254, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap())
+                .addGap(18, 18, 18))
         );
         jPanel3Layout.setVerticalGroup(
             jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jPanel3Layout.createSequentialGroup()
-                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addGap(118, 118, 118)
-                        .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(43, 43, 43)
-                        .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
-                            .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 30, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel3Layout.createSequentialGroup()
+                .addGap(105, 105, 105)
+                .addComponent(jButton4, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(33, 33, 33)
+                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addComponent(jButton1)
                 .addGap(27, 27, 27))
+            .addGroup(jPanel3Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 338, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(80, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -161,72 +173,63 @@ public class AsignarEmpleadosProyecto extends javax.swing.JDialog {
 
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         int pos = jTable1.getSelectedRow();
-        String dato = (String) jTable1.getModel().getValueAt(pos, 0);
-        jTable2.getModel().setValueAt(dato, row, 0);
-        row++;
-        DefaultTableModel model = (DefaultTableModel) jTable1.getModel();
-        model.removeRow(pos);
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        String dato = (String) model1.getValueAt(pos, 0);
+        //jTable2.getModel().setValueAt(dato, row, 0);
+        model2.addRow(new String[]{dato});
+        model1.removeRow(pos);
     }//GEN-LAST:event_jButton4ActionPerformed
 
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         int pos = jTable2.getSelectedRow();
-        String dato = (String) jTable2.getModel().getValueAt(pos, 0);
-        jTable1.getModel().setValueAt(dato, row, 0);
-        row++;
-        DefaultTableModel model = (DefaultTableModel) jTable2.getModel();
-        model.removeRow(pos);
+        DefaultTableModel model1 = (DefaultTableModel) jTable1.getModel();
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        String dato = (String) model2.getValueAt(pos, 0);
+        //jTable1.getModel().setValueAt(dato, row, 0);
+        model1.addRow(new String[]{dato});
+        model2.removeRow(pos);
     }//GEN-LAST:event_jButton6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         List<Empleado> empleadosAsignados = new ArrayList<>();
         List<String> listaNombre = new ArrayList<>();
-        for (int row = 0 ; row < jTable2.getRowCount(); row++){
-            listaNombre.add((String) jTable2.getModel().getValueAt(row, 0));
+        DefaultTableModel model2 = (DefaultTableModel) jTable2.getModel();
+        int totalRow = model2.getRowCount();
+        for (int row = 0; row < totalRow; row++) {
+            listaNombre.add((String) model2.getValueAt(row, 0));
         }
-        for(String n : listaNombre){
-            if(empresa.buscarEmpleado(n) != null)
+        for (String n : listaNombre) {
+            if (empresa.buscarEmpleado(n) != null) {
                 empleadosAsignados.add(empresa.buscarEmpleado(n));
+            }
         }
-        
-        empresa.getProyectos().get(empresa.getProyectos().size()-1).setListaEmpleadosAsignados(empleadosAsignados);
-        
-        empresa.asignarProyectoAEmpleado(empresa.getProyectos().get(empresa.getProyectos().size()-1), empleadosAsignados);
-        
+
+        empresa.getProyectos().get(empresa.getProyectos().size() - 1).getListaEmpleadosAsignados().addAll(empleadosAsignados);
+
+        empresa.asignarProyectoAEmpleado(empresa.getProyectos().get(empresa.getProyectos().size() - 1), empleadosAsignados);
+
         JOptionPane.showMessageDialog(rootPane, "Proyecto guardado con exito");
-        
+
     }//GEN-LAST:event_jButton1ActionPerformed
 
     public void showTable1() {
         String[] colsNames = {"Nombre"};
-        
-        List<Empleado> empleados = empresa.empleadosSinProyectos(empresa.getProyectos()
-                                                                        .get(empresa
-                                                                        .getProyectos()
-                                                                        .size()-1)
-                                                                        .getDepartamentoAsignado()
-                                                                        .getNombre());
-
-        DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size()*5+20);
-
+        DefaultTableModel model = new DefaultTableModel(colsNames, 0);
         jTable1.setModel(model);
 
-        int row = 0;
+        List<Empleado> empleados = empresa.empleadosSinProyectos(empresa.buscarProyecto(proyecto).getDepartamentoAsignado().getNombre());
+
         for (Empleado e : empleados) {
-            model.setValueAt(e.getNombre(), row, 0);
-            row++;
+            model.addRow(new String[]{e.getNombre()});
         }
+
     }
 
     public void showTable2() {
         String[] colsNames = {"Nombre"};
-        List<Empleado> empleados = empresa.empleadosSinProyectos(empresa.getProyectos()
-                                                                        .get(empresa
-                                                                        .getProyectos()
-                                                                        .size()-1)
-                                                                        .getDepartamentoAsignado()
-                                                                        .getNombre());
-        
-        DefaultTableModel model = new DefaultTableModel(colsNames, empleados.size()*5+20);
+
+        DefaultTableModel model = new DefaultTableModel(colsNames, 0);
         jTable2.setModel(model);
     }
 

@@ -31,5 +31,6 @@ public interface IEmpresa {
     
     public Departamento buscarDepartamento(String departamentoBuscar);
 
+    public Proyecto buscarProyecto(String proyectoBuscar);
 
 }

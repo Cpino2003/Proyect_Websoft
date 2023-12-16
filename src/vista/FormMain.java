@@ -40,6 +40,8 @@ public class FormMain extends javax.swing.JFrame {
         jLabel7 = new javax.swing.JLabel();
         jButton7 = new javax.swing.JButton();
         jButton8 = new javax.swing.JButton();
+        jButton9 = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
         Fondo = new javax.swing.JLabel();
         jLabel1 = new javax.swing.JLabel();
         jMenuBar1 = new javax.swing.JMenuBar();
@@ -58,6 +60,7 @@ public class FormMain extends javax.swing.JFrame {
         jMenuItem6 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Websoft Manager");
 
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
@@ -234,12 +237,33 @@ public class FormMain extends javax.swing.JFrame {
 
         jButton8.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/Captura de pantalla (18).png"))); // NOI18N
         jButton8.setBorder(javax.swing.BorderFactory.createLineBorder(new java.awt.Color(0, 0, 0)));
+        jButton8.addMouseMotionListener(new java.awt.event.MouseMotionAdapter() {
+            public void mouseMoved(java.awt.event.MouseEvent evt) {
+                jButton8MouseMoved(evt);
+            }
+        });
+        jButton8.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseExited(java.awt.event.MouseEvent evt) {
+                jButton8MouseExited(evt);
+            }
+        });
         jButton8.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton8ActionPerformed(evt);
             }
         });
         jPanel1.add(jButton8, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 380, 70, 60));
+
+        jButton9.setText("jButton9");
+        jButton9.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton9ActionPerformed(evt);
+            }
+        });
+        jPanel1.add(jButton9, new org.netbeans.lib.awtextra.AbsoluteConstraints(440, 210, -1, 60));
+
+        jLabel8.setText("Asignar Empleados a Proyecto");
+        jPanel1.add(jLabel8, new org.netbeans.lib.awtextra.AbsoluteConstraints(400, 190, -1, -1));
 
         Fondo.setIcon(new javax.swing.ImageIcon(getClass().getResource("/images/background-1409025_960_720.png"))); // NOI18N
         jPanel1.add(Fondo, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 650, -1));
@@ -346,7 +370,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa);
+        AddEmpleado1 addE = new AddEmpleado1(empresa);
         addE.setVisible(true);
     }//GEN-LAST:event_jMenuItem2ActionPerformed
 
@@ -366,7 +390,7 @@ public class FormMain extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem6ActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
-        AddEmpleado addE = new AddEmpleado(empresa);
+        AddEmpleado1 addE = new AddEmpleado1(empresa);
         addE.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
@@ -470,6 +494,19 @@ public class FormMain extends javax.swing.JFrame {
         regD.setVisible(true);        
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    private void jButton8MouseMoved(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseMoved
+        jLabel1.setText("Registro de departamentos");
+    }//GEN-LAST:event_jButton8MouseMoved
+
+    private void jButton8MouseExited(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButton8MouseExited
+        jLabel1.setText("");
+    }//GEN-LAST:event_jButton8MouseExited
+
+    private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
+        AsignarEmpleadosProyecto aep = new AsignarEmpleadosProyecto(empresa);
+        aep.setVisible(true);
+    }//GEN-LAST:event_jButton9ActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -515,6 +552,7 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JButton jButton6;
     private javax.swing.JButton jButton7;
     private javax.swing.JButton jButton8;
+    private javax.swing.JButton jButton9;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -522,6 +560,7 @@ public class FormMain extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
