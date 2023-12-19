@@ -42,32 +42,28 @@ public class Programador extends Empleado {
     //Metodo para calcular el salario del propio empleado
     @Override
     public double salario() {
-        if (proyectoAsignado != null) {
-            double salario = ((proyectoAsignado.getValorBase() / 2) / cantidadProgramador()) + (aproxLineasCodigoXHora / 10);
-
-            if (ausencias >= 3 || ausencias <= 7) {
-                salario -= ((salario * 3) / 100);
-            } else if (ausencias > 7 || ausencias <= 10) {
-                salario -= ((salario * 5) / 100);
-            } else if (ausencias > 10 || ausencias <= 15) {
-                salario -= (salario / 4);
-            }
-
-            salario = salario - super.salario();
-
-            return salario;
-        } else {
-            return 0;
-        }
+        double salario = ((proyectoAsignado.getValorBase() / 2) / cantidadProgramador()) + (aproxLineasCodigoXHora/10);
+        
+        if(ausencias >= 3 || ausencias <= 7)
+            salario -= ((salario*3)/100);
+        else
+            if(ausencias > 7 || ausencias <= 10)
+                salario -= ((salario*5)/100);
+            else
+                if(ausencias > 10 || ausencias <= 15)
+                    salario -= (salario/4);
+        
+        salario = salario - super.salario();  
+        
+        return salario;
     }
-
-    private int cantidadProgramador() {
+    
+    private int cantidadProgramador(){
         int contador = 0;
-        for (Empleado e : proyectoAsignado.getListaEmpleadosAsignados()) {
-            if (e instanceof Programador && NivelEscolar.TecnicoMedio.equals(e.getNivelEscolar())) {
+        for(Empleado e : proyectoAsignado.getListaEmpleadosAsignados())
+            if(e instanceof Programador && NivelEscolar.TecnicoMedio.equals(e.getNivelEscolar()))
                 contador++;
-            }
-        }
         return contador;
     }
 }
+

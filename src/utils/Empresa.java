@@ -180,16 +180,5 @@ public class Empresa implements IEmpresa {
         }
         return null;
     }
-    
-    @Override
-    public Proyecto buscarProyecto(String proyectoBuscar) {
-
-        for (Proyecto p : proyectos) {
-            if (proyectoBuscar.equals(p.getNombre())) {
-                return p;
-            }
-        }
-        return null;
-    }
 
 }

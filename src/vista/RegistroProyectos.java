@@ -70,7 +70,6 @@ public class RegistroProyectos extends javax.swing.JDialog {
         jSeparator2 = new javax.swing.JSeparator();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
-        setTitle("Registro de proyectos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de Proyectos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());

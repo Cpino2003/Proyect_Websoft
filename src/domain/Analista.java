@@ -2,7 +2,8 @@ package domain;
 
 import utils.NivelEscolar;
 
-public class Analista extends GraduadoUniversitario {
+
+public class Analista extends GraduadoUniversitario{
 
     private String metodologiaSoftwareUtilizada;
     private int aproxClasesXDia;
@@ -28,36 +29,31 @@ public class Analista extends GraduadoUniversitario {
     public void setAproxClasesXDia(int aproxClasesXDia) {
         this.aproxClasesXDia = aproxClasesXDia;
     }
-
+    
     //Metodo para calcular el salario del propio empleado
     @Override
-    public double salario() {
-        if (proyectoAsignado != null) {
-            double salario = (((proyectoAsignado.getValorBase() * 3) / 10) / cantidadAnalista()) + aproxClasesXDia + (metodologiaSoftwareUtilizada.equals("UML") ? aproxClasesXDia / 10 : 0);
-
-            if (ausencias >= 3 || ausencias <= 7) {
-                salario -= ((salario * 3) / 100);
-            } else if (ausencias > 7 || ausencias <= 10) {
-                salario -= ((salario * 5) / 100);
-            } else if (ausencias > 10 || ausencias <= 15) {
-                salario -= (salario / 4);
-            }
-
-            salario = salario - super.salario();
-
-            return salario;
-        } else {
-            return 0;
-        }
+    public double salario(){
+        double salario = (((proyectoAsignado.getValorBase() * 3)/10) / cantidadAnalista()) + aproxClasesXDia + (metodologiaSoftwareUtilizada.equals("UML") ?aproxClasesXDia/10 :0);
+        
+        if(ausencias >= 3 || ausencias <= 7)
+            salario -= ((salario*3)/100);
+        else
+            if(ausencias > 7 || ausencias <= 10)
+                salario -= ((salario*5)/100);
+            else
+                if(ausencias > 10 || ausencias <= 15)
+                    salario -= (salario/4);
+        
+        salario = salario - super.salario();  
+        
+        return salario;
     }
-
-    private int cantidadAnalista() {
+    
+    private int cantidadAnalista(){
         int contador = 0;
-        for (Empleado e : proyectoAsignado.getListaEmpleadosAsignados()) {
-            if (e instanceof Analista) {
+        for(Empleado e : proyectoAsignado.getListaEmpleadosAsignados())
+            if(e instanceof Analista)
                 contador++;
-            }
-        }
         return contador;
     }
 
