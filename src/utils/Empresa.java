@@ -45,8 +45,8 @@ public class Empresa implements IEmpresa {
 
     //Metodo para añadir un departamento
     @Override
-    public boolean addDepartamento(Departamento departamentoAAñadir) {
-        return departamentos.add(departamentoAAñadir);
+    public boolean addDepartamento(Departamento departamento) {
+        return departamentos.add(departamento);
 
     }
 
@@ -176,6 +176,17 @@ public class Empresa implements IEmpresa {
         for (Departamento departamento : departamentos) {
             if (departamentoBuscar.equals(departamento.getNombre())) {
                 return departamento;
+            }
+        }
+        return null;
+    }
+    
+    @Override
+    public Proyecto buscarProyecto(String proyectoBuscar) {
+
+        for (Proyecto p : proyectos) {
+            if (proyectoBuscar.equals(p.getNombre())) {
+                return p;
             }
         }
         return null;

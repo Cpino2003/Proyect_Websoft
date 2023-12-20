@@ -117,7 +117,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
             }
         });
 
-        jLabel2.setText("Entre el nombre del empleado:");
+        jLabel2.setText("Entre el nombre y apellidos del empleado:");
 
         jTextField2.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -774,7 +774,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
     }//GEN-LAST:event_jTextField4ActionPerformed
 
     private void jTextField3KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField3KeyTyped
-
+        
     }//GEN-LAST:event_jTextField3KeyTyped
 
     private void jTextField3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextField3ActionPerformed
@@ -783,7 +783,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
@@ -805,7 +805,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField8KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField8KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField8KeyTyped
@@ -845,7 +845,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField16KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField16KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField16KeyTyped
@@ -859,7 +859,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField20KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField20KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }        
     }//GEN-LAST:event_jTextField20KeyTyped
@@ -877,7 +877,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField22KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField22KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         } 
     }//GEN-LAST:event_jTextField22KeyTyped
@@ -899,7 +899,7 @@ public class AddEmpleado1 extends javax.swing.JDialog {
 
     private void jTextField24KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField24KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }        
     }//GEN-LAST:event_jTextField24KeyTyped

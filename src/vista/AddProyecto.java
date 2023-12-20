@@ -60,6 +60,7 @@ public class AddProyecto extends javax.swing.JDialog {
         jComboBox2 = new javax.swing.JComboBox();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulario paraañadir proyectos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Formulario para añadir Proyectos", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -138,6 +139,12 @@ public class AddProyecto extends javax.swing.JDialog {
         });
 
         jLabel9.setText("Seleccione el departamento a asignar:");
+
+        jComboBox2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBox2ActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
@@ -262,8 +269,6 @@ public class AddProyecto extends javax.swing.JDialog {
                 empresa.adddProyecto(proyecto);
                 JOptionPane.showMessageDialog(rootPane, "El proyecto se ha guardado de forma satisfactoria");
                 
-                AsignarEmpleadosProyecto aep = new AsignarEmpleadosProyecto(empresa);
-                aep.setVisible(true);
                 clear();
                 
             } else {
@@ -280,28 +285,28 @@ public class AddProyecto extends javax.swing.JDialog {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped
 
     private void jTextField4KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField4KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField4KeyTyped
 
     private void jTextField5KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField5KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetterOrDigit(teclaPulsada)) {
+        if (!Character.isLetterOrDigit(teclaPulsada ) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField5KeyTyped
@@ -312,6 +317,10 @@ public class AddProyecto extends javax.swing.JDialog {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField6KeyTyped
+
+    private void jComboBox2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBox2ActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jComboBox2ActionPerformed
 
     private boolean checkComponents() {
         if (jTextField1.getText().equals("")

@@ -49,6 +49,7 @@ public class AddDepartamento extends javax.swing.JDialog {
         jButton2 = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Formulario para Añadir departamentos");
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Formulario para añadir Departamentos\n", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
 
@@ -182,14 +183,14 @@ public class AddDepartamento extends javax.swing.JDialog {
 
     private void jTextField1KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField1KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField1KeyTyped
 
     private void jTextField2KeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_jTextField2KeyTyped
         char teclaPulsada = evt.getKeyChar();
-        if (!Character.isLetter(teclaPulsada)) {
+        if (!Character.isLetter(teclaPulsada) && !Character.isSpaceChar(teclaPulsada)) {
             evt.consume();
         }
     }//GEN-LAST:event_jTextField2KeyTyped

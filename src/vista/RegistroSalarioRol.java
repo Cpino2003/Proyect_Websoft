@@ -46,6 +46,7 @@ public class RegistroSalarioRol extends javax.swing.JDialog {
         jTable5 = new javax.swing.JTable();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
+        setTitle("Registro de Empleados con salario");
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Registro de salario de empleados por rol", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.TOP, new java.awt.Font("Tahoma", 1, 14))); // NOI18N
         jPanel5.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
