@@ -1,5 +1,9 @@
 package vista;
 
+import domain.Departamento;
+import domain.Empleado;
+import domain.Proyecto;
+import java.util.ArrayList;
 import utils.Empresa;
 
 public class FormMain extends javax.swing.JFrame {
@@ -7,7 +11,7 @@ public class FormMain extends javax.swing.JFrame {
     /**
      * Creates new form FormMain
      */
-    private Empresa empresa = new Empresa(null, null, null);
+    private Empresa empresa = new Empresa(new ArrayList<>(), new ArrayList<>(), new ArrayList<>());
 
     public FormMain() {
         initComponents();

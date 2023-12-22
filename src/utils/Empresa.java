@@ -14,9 +14,9 @@ public class Empresa implements IEmpresa {
     private List<Empleado> empleados;
 
     public Empresa(List<Departamento> departamentos, List<Proyecto> proyectos, List<Empleado> empleados) {
-        this.departamentos = new ArrayList<>();
-        this.proyectos = new ArrayList<>();
-        this.empleados = new ArrayList<>();
+        this.departamentos = departamentos;
+        this.proyectos = proyectos;
+        this.empleados = empleados;
     }
 
     public List<Departamento> getDepartamentos() {
